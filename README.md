@@ -1,2 +1,2 @@
-# bestnid
-Prueba de README 2
+# bestnid Ingenieria 2
+Sitio de subastas donde el bien subastado no se adjudica al postor que más dinero haya ofrecido por él, sino que cada postor comunica por qué necesita dicho producto, y el subastador elegirá un ganador.
