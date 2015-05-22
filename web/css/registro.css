@@ -1,0 +1,20 @@
+div.registro{
+
+	margin: 100px auto;
+	height: 40%;
+	background: rgba( 38, 34, 32, 0.708 );
+	width: 30%;
+
+	border-radius: 25px;
+	border:2px solid black;
+	color:white;
+}
+
+div.registro form{
+	margin-left: 75px;
+	margin-top: 50px;
+}
+
+span.oblig{
+	color: #680c07;
+}
