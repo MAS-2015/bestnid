@@ -55,6 +55,7 @@ image{
 div.login form {
 	padding: 15px;
 	float:right;
+	
 
 }
 
@@ -69,17 +70,14 @@ div.login {
 	height: 50px;
 	background: #232125;
 	color:#ffffff;
+	margin-bottom: 100px;
 	font-family: "Delius-Regular";
 }
 
 div.login a{
-	color:#b82828;
-	text-shadow: 1px white;
-	padding: 15px;
 	font-family: "Delius-Regular";
-
+	margin-top: 15px;
 	position: absolute;
-
 }
 	
 
@@ -99,4 +97,23 @@ div.footer{
 	color:white;
 	font-family: "Delius-Regular";
 	text-align: center;
+}
+
+.buttom {
+	background:#b82828;
+	border-radius:8px;
+	width:auto;
+	height:auto;
+	font-weight:bold;
+    color:#d9d1a5;
+	margin:0 auto;
+	padding: 3px;
+
+
+
+}
+
+.buttom:hover{
+	color: #232125;
+
 }

@@ -1,10 +1,10 @@
 div.registro{
-
-	margin: 100px auto;
-	height: 40%;
+	padding-top: 15px;
+	margin: 0 auto ;
+	height: auto;
 	background: rgba( 38, 34, 32, 0.708 );
 	width: 30%;
-
+	padding-bottom: 15px;
 	border-radius: 25px;
 	border:2px solid black;
 	color:white;
@@ -12,9 +12,31 @@ div.registro{
 
 div.registro form{
 	margin-left: 75px;
-	margin-top: 50px;
+	margin-top: 25px;
+	font-family: "Delius-Regular";
 }
 
 span.oblig{
 	color: #680c07;
 }
+
+p.infoR{
+	text-align: center;
+	font-family: "Delius-Regular";
+}
+
+input[type=text]{
+	border-radius: 5px;
+	padding-left: 2px;
+}
+
+input[type=number]{
+	border-radius: 5px;
+	padding-left: 2px;
+}
+
+input[type=password]{
+	border-radius: 5px;
+	padding-left: 2px;	
+}
+

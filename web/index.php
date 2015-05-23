@@ -1,8 +1,8 @@
 <html>
 	<head>
 		<title>BESTNID: Inicio</title>
-		<link type="text/css" id="global-css" rel="stylesheet" href="css/home.css" media="all">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/header.css" media="all">
+		<link type="text/css" id="global-css" rel="stylesheet" href="css/home.css">
 	</head>
 
 
@@ -11,21 +11,18 @@
 			<div class="pagina">
 				<div class="login">
 					<img src="imagenes/logo2.png" height="45">
-					<a href="/bestnid/registrate.php">REGISTRATE GRATIS</a>
-					<form name="login" method="post" action="modulos/login.php">
-						E-mail <input type="text" name="email" value="@">
-						Contrase&ntilde;a <input type="password" name="pass">
-						<input type="submit" value="Ingresar">
-					</form>
+					<a  class="buttom" href="/bestnid/registrate.php">REGISTRATE GRATIS</a>
+					<?php
+						include ('login.php');
+					?>
+				</div>
+				<div class="busqueda-categorias">
+					<p>Categor&iacute;as:</p>
+					<div>
+						<?php include("/modulos/busqueda_categorias.php");?>
+					</div>
 				</div>
 			</div>	
-			
-			<div class="busqueda-categorias">
-				<p>Categor&iacute;as:</p>
-				<div>
-					<?php include("/modulos/busqueda_categorias.php");?>
-				</div>
-			</div>
 			<div class="footer">
 				Copyright &copy; 2015 - Desarrollo Grupo MAS
 			</div>
