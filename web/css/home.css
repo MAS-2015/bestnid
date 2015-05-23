@@ -1,0 +1,33 @@
+a.link-categoria{
+	float:left;
+	margin: 5px 10px;
+	padding: 1px 5px;
+	color: black;
+	font-family: "Delius-Regular";
+	border: 3px inset red;
+}
+
+a.link-categoria:hover{
+	background-color: #232125;
+	border: 3px solid #232125;
+	color: white;
+	border-bottom:3px solid #B82828;
+}
+
+div.busqueda-categorias{
+	min-width:200px;
+	min-height: 80px;
+	clear:all;
+	width:100%;
+	padding: 5px 10px;
+}
+
+div.busqueda-categorias div{
+	width:100%;
+}
+
+div.busqueda-categorias p{
+	font-weight: bold;
+	text-decoration: underline;
+	font-size: 1.2em;
+}

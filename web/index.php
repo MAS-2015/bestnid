@@ -1,6 +1,7 @@
 <html>
 	<head>
 		<title>BESTNID: Inicio</title>
+		<link type="text/css" id="global-css" rel="stylesheet" href="css/home.css" media="all">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/header.css" media="all">
 	</head>
 
@@ -18,6 +19,13 @@
 					</form>
 				</div>
 			</div>	
+			
+			<div class="busqueda-categorias">
+				<p>Categor&iacute;as:</p>
+				<div>
+					<?php include("/modulos/busqueda_categorias.php");?>
+				</div>
+			</div>
 			<div class="footer">
 				Copyright &copy; 2015 - Desarrollo Grupo MAS
 			</div>
