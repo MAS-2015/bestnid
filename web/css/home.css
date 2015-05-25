@@ -31,3 +31,9 @@ div.busqueda-categorias p{
 	text-decoration: underline;
 	font-size: 1.2em;
 }
+
+div.muestra-subastas{
+	float:left;
+	width:70%;
+	margin-left:15%;
+}

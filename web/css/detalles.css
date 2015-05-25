@@ -1,0 +1,48 @@
+
+div.semi-detalle-container{
+	float:left;
+	width:200px;
+	height:260px;
+	padding:5px;
+	margin: 5px;
+	border: 1px solid gray;
+}
+div.semi-detalle-container:hover{
+	box-shadow: 0px 0px 10px 0px black;
+}
+div.semi-detalle-imagen{
+	width:200px;
+	height:180px;
+}
+
+div.semi-detalle-imagen img{
+	max-width:100%;
+	max-height:100%;
+}
+
+div.semi-detalle-titulo{
+	width:200px;
+	height:2em;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap; 
+}
+
+div.semi-detalle-titulo span{
+	padding-bottom:2px;
+	padding-left:1em;
+	width:100%;
+	height:100%;
+	color: black;
+}
+
+div.semi-detalle-countdown{
+	width:200px;
+	height:20px;
+	text-align:center;
+}
+
+div.semi-detalle-countdown p{
+	font-weight: bold;
+	color: red;
+}
