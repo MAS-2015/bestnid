@@ -15,9 +15,9 @@ a.link-categoria:hover{
 }
 
 div.busqueda-categorias{
+	box-sizing: border-box;
 	min-width:200px;
 	min-height: 80px;
-	clear:all;
 	width:100%;
 	padding: 5px 10px;
 }
@@ -30,10 +30,4 @@ div.busqueda-categorias p{
 	font-weight: bold;
 	text-decoration: underline;
 	font-size: 1.2em;
-}
-
-div.muestra-subastas{
-	float:left;
-	width:70%;
-	margin-left:15%;
 }

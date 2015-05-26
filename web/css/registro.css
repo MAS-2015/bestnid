@@ -3,7 +3,7 @@ div.registro{
 	margin: 0 auto ;
 	height: auto;
 	background: rgba( 38, 34, 32, 0.708 );
-	width: 30%;
+	width: 500px;
 	padding-bottom: 15px;
 	border-radius: 25px;
 	border:2px solid black;
@@ -26,17 +26,20 @@ p.infoR{
 }
 
 input[type=text]{
+	padding-right: 2px;
 	border-radius: 5px;
 	padding-left: 2px;
 }
 
 input[type=number]{
 	border-radius: 5px;
+	padding-right: 2px;
 	padding-left: 2px;
 }
 
 input[type=password]{
 	border-radius: 5px;
+	padding-right: 2px;
 	padding-left: 2px;	
 }
 

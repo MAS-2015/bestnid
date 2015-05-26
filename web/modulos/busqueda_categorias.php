@@ -1,5 +1,5 @@
 <?php 
-include_once("conexion.php");
+include("conexion.php");
 
 
 $sql = "SELECT * FROM `categorias` ORDER BY `categorias`.`nombre`";
