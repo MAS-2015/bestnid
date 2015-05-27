@@ -9,7 +9,7 @@ while($fila = mysqli_fetch_assoc($resultado)){
 	$idCategoria = $fila["idCategoria"];
 	$nombre = $fila["nombre"];
 	echo '
-	<a class="link-categoria" href="index.php?categoria='.$nombre.'">'.$nombre.'</a>
+	<a class="link-categoria" href="index.php?categoria='.$idCategoria.'">'.$nombre.'</a>
 	';
 
 }
