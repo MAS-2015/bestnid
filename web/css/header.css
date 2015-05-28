@@ -146,6 +146,7 @@ form.login input[type=password]{
 	border-radius: 5px;
 	padding-left: 2px;
 	padding-right: 2px;
+	width: 151px;
 }
 
 form.login input[type=submit]{
