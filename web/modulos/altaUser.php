@@ -9,6 +9,7 @@
 	$sql = "INSERT INTO usuarios (idUsuario, email, password, domicilio, nombreApellido, nroTarjeta, telefono) VALUES  (NULL,'".$email."','".$pass."','".$dom."','".$nom."','".$nroTarj."', '".$nroTel."')";
 	$resultado= mysqli_query($conexion, $sql);
 	mysqli_close($conexion);
-	header('Location: ../index.php');
+ 	$msj="La cuenta se creo con exito";
+ 	header('Location: ../login.php?msj='.$msj.'');
 
 ?>

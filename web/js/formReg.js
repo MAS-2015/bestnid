@@ -50,6 +50,17 @@ function valido(reg) {
                 return false;
 			}
 		}
-			
+	else
+		if (document.getElementById("Error")){
+			alert('Correo existente.. por Favor ingrese un Correo electronico distinto');
+			document.reg.email.focus()
+			return false;
+		}
+	else
+		if (document.getElementById("ErrorTarjeta")){
+			alert('Tarjeta en uso por otro usuario.. por Favor ingrese una tarjeta distinta');
+			document.reg.nroTarj.focus()
+			return false;
+		}		
 
   }

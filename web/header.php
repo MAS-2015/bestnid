@@ -9,6 +9,6 @@
 			include ('busqueda_titulo.php');
 		?>
 		<?php
-			include ('login.php');
+			include ('formlogin.php');
 		?>
 </div>
