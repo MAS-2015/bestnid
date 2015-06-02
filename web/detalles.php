@@ -1,3 +1,9 @@
+<?php
+	if(!session_start()){
+		session_start();
+	}
+?>
+
 <html>
 	<head>
 	<?php
@@ -24,6 +30,7 @@
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/detalles.css" media="all">
 		<link rel="icon" type="image/png" href="imagenes/favicon.png">
 		<script src="scripts/countdown.js"></script>
+		<script type="text/javascript" src="js/login.js"></script>	
 	</head>
 
 

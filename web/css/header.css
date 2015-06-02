@@ -95,7 +95,7 @@ div.header form.buscador{
 }
 
 
-div.header form.login {
+div.header div.login {
 	padding: 5px;
 	font-size: 12px;
 	float:right;

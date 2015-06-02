@@ -33,27 +33,7 @@ function semi_detalles_PorCategoria($inicio,$maximo,$idCategoria){
 function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 	include("/modulos/conexion.php");
 	$titulo = mysqli_real_escape_string($conexion,$titulo);
-	echo 'titulo: '.$titulo.'<br>';
-	$busqueda=explode(" ",$titulo);
-	
-	$select = "SELECT * FROM `subastas` ";
-	$where =" WHERE `fechaFin` > Now() AND ( ";
-	$titulos="";
-	
-	$sacar= array('a', 'al', 'el', 'la', 'las', 'lo', 'los', 'un', 'una', 'uno', 'unos', 'de', 'del' ) ;
-	$busqueda = array_diff($busqueda,$sacar);
-	reset($busqueda);
-	$primero=current($busqueda);
-	foreach( $busqueda as $val){
-		if($val == $primero){
-			$titulos = $titulos . " `titulo` LIKE '%".$val."%' ";
-		}else{
-			$titulos = $titulos . " OR `titulo` LIKE '%".$val."%' ";
-		}
-	}
-	$titulos = $titulos . ")";
-	$orden = "ORDER BY `fechaFin` ASC ";
-	$sql= $select.$where.$titulos.$orden." LIMIT ".$inicio.','.$maximo;
+	$sql = "SELECT * FROM `subastas` WHERE `fechaFin` > Now() AND `subastas`.`titulo`LIKE '%".$titulo."%' ORDER BY `fechaFin` DESC LIMIT ".$inicio.','.$maximo;
 	$resultado= mysqli_query($conexion, $sql);
 	$maximo-=mysqli_num_rows($resultado);
 	if(mysqli_num_rows($resultado) > 0){
@@ -61,18 +41,14 @@ function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 			semi_detalle($fila['idSubasta']);
 		}
 		if($maximo){
-			$where =" WHERE `fechaFin` < Now() AND ( ";
-			$orden = " ORDER BY `fechaFin` DESC ";
-			$sql= $select.$where.$titulos.$orden." LIMIT 0,".$maximo;
+			$sql="SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`titulo`LIKE '%".$titulo."%' ORDER BY `fechaFin` DESC LIMIT 0,".$maximo;
 			$resultado= mysqli_query($conexion, $sql);
 			while($fila = mysqli_fetch_assoc($resultado)){
 				semi_detalle($fila['idSubasta']);
 			}
 		}
 	}else{
-		$where =" WHERE `fechaFin` < Now() AND ( ";
-		$orden = " ORDER BY `fechaFin` DESC ";
-		$sql= $select.$where.$titulos.$orden." LIMIT ".$inicio.','.$maximo;
+		$sql = "SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`titulo`LIKE '%".$titulo."%' ORDER BY `fechaFin` DESC LIMIT ".$inicio.','.$maximo;
 		$resultado= mysqli_query($conexion, $sql);
 		if(mysqli_num_rows($resultado) > 0){
 			while($fila = mysqli_fetch_assoc($resultado)){

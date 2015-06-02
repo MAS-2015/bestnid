@@ -3,56 +3,69 @@
 .both{ float:left; margin:0 15px 0 0; padding:0px;}
 
 #Info{
+	padding-left: 25px;
 	display: inline;
+	height: 20px;
 }
 
 #Info2{
+	padding-left: 25px;	
 	display: inline;
+	height: 20px;	
+}
+
+#Info3{
+	padding-left: 25px;	
+	display: inline;
+	height: 20px;	
+}
+
+#Info4{
+	padding-left: 25px;	
+	display: inline;
+	height: 20px;	
+}
+
+#Info5{
+	padding-left: 25px;	
+	display: inline;
+	height: 20px;	
+}
+#Info6 {
+	padding-left: 25px;	
+	display: inline;
+	height: 20px;	
+}
+
+#Info7 {
+	padding-left: 25px;	
+	display: inline;
+	height: 20px;	
 }
 
 #Error{
 	background-image:url(../imagenes/no.png);
 	background-repeat:no-repeat;
 	background-position:left; 
-	color:#FF0000; 
+	color:#8b1717; 
 	padding-left:33px; 
-	height:19px; 
+	height:20px; 
 	padding-right:10px;
 	display: inline;
+	font-weight: bold;
 	}
 #Success{
 	background-image:url(../imagenes/si.png);
 	background-repeat:no-repeat;
 	background-position:left; 
-	color:#669933; 
+	color:#347940; 
 	padding-left:33px; 
-	height:19px; 
+	height:20px; 
 	display: inline;
-
+	font-weight: bold;
 	padding-right:10px;
 	}
 
-#ErrorTarjeta{
-	background-image:url(../imagenes/no.png);
-	background-repeat:no-repeat;
-	background-position:left; 
-	color:#FF0000; 
-	padding-left:33px; 
-	height:19px; 
-	padding-right:10px;
-	display: inline;
-	}
-#Success2{
-	background-image:url(../imagenes/si.png);
-	background-repeat:no-repeat;
-	background-position:left; 
-	color:#669933; 
-	padding-left:33px; 
-	height:19px; 
-	display: inline;
-
-	padding-right:10px;
-	}
 
 #customForm input{
 	width: 220px;

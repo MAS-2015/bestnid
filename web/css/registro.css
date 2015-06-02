@@ -2,8 +2,9 @@ div.registro{
 	padding-top: 15px;
 	margin: 0 auto ;
 	height: auto;
-	background: rgba( 38, 34, 32, 0.708 );
-	width: 500px;
+	padding: 25px;
+	background: rgba( 73, 73, 73, 0.616 );
+	width: 350px;
 	padding-bottom: 15px;
 	border-radius: 25px;
 	border:2px solid black;
@@ -11,17 +12,25 @@ div.registro{
 }
 
 div.registro form{
-	margin-left: 75px;
+	margin:0 auto;
 	margin-top: 25px;
+	width: 700px;
 	font-family: "Delius-Regular";
+
+}
+
+#enviar{
+	margin:0 auto;
 }
 
 span.oblig{
 	color: #680c07;
+	height: 20px;
 }
 
 p.infoR{
-	text-align: center;
+	text-align: left;
+	padding-left: 25px;
 	font-family: "Delius-Regular";
 }
 
@@ -31,6 +40,7 @@ form.reg input[type=text]{
 	padding-left: 2px;
 	width: 350px;
 	height: 40px;
+	margin-bottom: 5px;
 }
 
 form.reg input[type=number]{
@@ -38,7 +48,8 @@ form.reg input[type=number]{
 	padding-right: 2px;
 	padding-left: 2px;
 	width: 350px;
-	height: 40px;	
+	height: 40px;
+	margin-bottom: 5px;	
 }
 
 form.reg input[type=password]{
@@ -46,6 +57,7 @@ form.reg input[type=password]{
 	padding-right: 2px;
 	padding-left: 2px;
 	width: 350px;
-	height: 40px;	
+	height: 40px;
+	margin-bottom: 5px;	
 }
 
