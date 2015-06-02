@@ -33,7 +33,24 @@ function semi_detalles_PorCategoria($inicio,$maximo,$idCategoria){
 function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 	include("/modulos/conexion.php");
 	$titulo = mysqli_real_escape_string($conexion,$titulo);
-	$sql = "SELECT * FROM `subastas` WHERE `fechaFin` > Now() AND `subastas`.`titulo`LIKE '%".$titulo."%' ORDER BY `fechaFin` DESC LIMIT ".$inicio.','.$maximo;
+	echo 'titulo: '.$titulo.'<br>';
+	$busqueda=explode(" ",$titulo);
+	
+	$select = "SELECT * FROM `subastas` ";
+	$where =" WHERE `fechaFin` > Now() AND ( ";
+	$titulos="";
+	
+	$sacar= array('a', 'al', 'el', 'la', 'las', 'lo', 'los', 'un', 'una', 'uno', 'unos', 'de', 'del', ' ','' ) ;
+	$busqueda = array_diff($busqueda,$sacar);
+	reset($busqueda);
+	$primero=current($busqueda);
+	$titulos = $titulos . " `titulo` LIKE '%".$primero."%' ";
+	foreach( $busqueda as $val){
+		$titulos = $titulos . " OR `titulo` LIKE '%".$val."%' ";
+	}
+	$titulos = $titulos . ")";
+	$orden = "ORDER BY `fechaFin` ASC ";
+	$sql= $select.$where.$titulos.$orden." LIMIT ".$inicio.','.$maximo;
 	$resultado= mysqli_query($conexion, $sql);
 	$maximo-=mysqli_num_rows($resultado);
 	if(mysqli_num_rows($resultado) > 0){
@@ -41,14 +58,18 @@ function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 			semi_detalle($fila['idSubasta']);
 		}
 		if($maximo){
-			$sql="SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`titulo`LIKE '%".$titulo."%' ORDER BY `fechaFin` DESC LIMIT 0,".$maximo;
+			$where =" WHERE `fechaFin` < Now() AND ( ";
+			$orden = " ORDER BY `fechaFin` DESC ";
+			$sql= $select.$where.$titulos.$orden." LIMIT 0,".$maximo;
 			$resultado= mysqli_query($conexion, $sql);
 			while($fila = mysqli_fetch_assoc($resultado)){
 				semi_detalle($fila['idSubasta']);
 			}
 		}
 	}else{
-		$sql = "SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`titulo`LIKE '%".$titulo."%' ORDER BY `fechaFin` DESC LIMIT ".$inicio.','.$maximo;
+		$where =" WHERE `fechaFin` < Now() AND ( ";
+		$orden = " ORDER BY `fechaFin` DESC ";
+		$sql= $select.$where.$titulos.$orden." LIMIT ".$inicio.','.$maximo;
 		$resultado= mysqli_query($conexion, $sql);
 		if(mysqli_num_rows($resultado) > 0){
 			while($fila = mysqli_fetch_assoc($resultado)){
@@ -100,8 +121,8 @@ function countdown($time){
 			var pageCountdown = new Countdown({				
 				style:"flip",
 			 	year	: '. date('Y', $time).',month	: '.date('m', $time).', day		: '.date('d', $time).',	hour   :0,minute   : 0,seconds   : 0,
-				width	: 200, height	: 28,
-				interval : 100, rangeHi:"day", 
+				width	: 200, height	: 40,
+				interval : 100, rangeHi:"day", rangeLo  : "minute",
 				labelText :{ second 	: "seg", minute 	: "min", hour	: "hs", day 	: "D&iacute;as"}
 				});
 		</script>	
@@ -111,8 +132,7 @@ function countdown($time){
 
 function get_info_producto($idSubasta){
 	include("/modulos/conexion.php");
-	$sql = " SELECT `idSubasta`,`fechaInicio`,`fechaFin`,`titulo`,`descripcion`,`imagen`,`idCategoria`,`idUsuario`, Now() AS now FROM `subastas` WHERE `idSubasta` =".$idSubasta;
-	//$sql = "SELECT `idSubasta`,`fechaInicio`,`fechaFin`,`titulo`,`imagen`, `subastas`.`idCategoria`, `categorias`.`nombre`, `nombreApellido` , Now() AS now FROM `subastas` INNER JOIN `usuarios` ON `subastas`.`idUsuario` = `usuarios`.`idUsuario` INNER JOIN `categorias`ON `categorias`.`idCategoria` = `subastas`.`idCategoria` WHERE `subastas`.`idSubasta` =".$idSubasta;
+	$sql = " SELECT `idSubasta`,`fechaInicio`,`fechaFin`,`titulo`,`descripcion`,`imagen`,`idCategoria`,`idUsuario`, Now() AS now FROM `subastas` WHERE `idSubasta` =".$idSubasta;	
 	$resultado= mysqli_query($conexion, $sql);
 	$fila = mysqli_fetch_assoc($resultado);
 	$sqlUser = "SELECT `nombreApellido` FROM `usuarios` WHERE `idUsuario` = " .$fila["idUsuario"];
