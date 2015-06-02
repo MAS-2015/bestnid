@@ -32,3 +32,11 @@ div.busqueda-categorias p{
 	text-decoration: underline;
 	font-size: 1.2em;
 }
+
+div.msj{
+	margin-top: -90px;
+	float:right;
+	padding-right:200px;
+	font-weight: bold;
+	
+}

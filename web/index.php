@@ -22,7 +22,22 @@
 				<?php
 					include('header.php');
 				?>
-
+				<div class="msj">
+					<?php
+						if(empty($_GET)){
+							echo '';
+						} else{
+						// se imprime mensajes
+							if(!(empty($_GET['msj']))){
+								
+								$men=($_GET['msj']);
+								echo('<b>'.$men.'</b>');
+							}
+							   
+						}
+					?>	
+				
+				</div>
 				<div class="muestra-subastas">
 				<?php
 					include_once("/modulos/funciones_detalle.php");
