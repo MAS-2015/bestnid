@@ -2,9 +2,8 @@
 	
 	if(!(empty($_POST['nombre']))){
 		include("conexion.php");
-		$nombre = $_POST['nombre'];
-		$idCategoria= $_REQUEST['selector'];
-		$idCategoria = mysqli_real_escape_string($conexion,$idCategoria);
+		$nombre = mysqli_real_escape_string($conexion,$_POST['nombre']);
+		$idCategoria = mysqli_real_escape_string($conexion,$_REQUEST['selector']);
 		$sql="UPDATE `categorias` SET `nombre` = '$nombre' WHERE `idCategoria`='$idCategoria'";
 		$resultado= mysqli_query($conexion, $sql);
 		if($resultado){
