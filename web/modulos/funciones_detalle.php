@@ -33,7 +33,7 @@ function semi_detalles_PorCategoria($inicio,$maximo,$idCategoria){
 function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 	include("/modulos/conexion.php");
 	$titulo = mysqli_real_escape_string($conexion,$titulo);
-	echo 'titulo: '.$titulo.'<br>';
+	echo 'Resultados de b&uacute;squeda para: '.$titulo.'<br>';
 	$busqueda=explode(" ",$titulo);
 	
 	$select = "SELECT * FROM `subastas` ";
@@ -76,7 +76,7 @@ function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 				semi_detalle($fila['idSubasta']);
 			}
 		}else{
-			echo 'No se han encontrado resultados de esa categor&iacute;a';
+			echo 'No se han encontrado resultados en esta b&uacute;squeda';
 		}
 	}
 }
