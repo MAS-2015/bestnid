@@ -12,7 +12,7 @@
 		<link rel="icon" type="image/png" href="../imagenes/favicon.png">
 		<link type="text/css" id="global-css" href="css/estiloadmin.css" rel="stylesheet">
 		<link type="text/css" id="global-css" href="css/menu.css" rel="stylesheet"> 
-		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="../js/login.js"></script>
 	</head>
 
 
