@@ -1,8 +1,8 @@
 <html>
 	<head>
-		<link type="text/css" id="global-css" rel="stylesheet" href="css/registro.css" media="all">
-		<link type="text/css" id="global-css" rel="stylesheet" href="css/header.css" media="all">
-		<script type="text/javascript" src="js/validarCategoria.js"></script> 
+		<link type="text/css" id="global-css" rel="stylesheet" href="../css/registro.css" media="all">
+		<link type="text/css" id="global-css" rel="stylesheet" href="../css/header.css" media="all">
+		<script type="text/javascript" src="../js/validarCategoria.js"></script> 
 	</head>
 	<body>
 		<div class="wrapper">
