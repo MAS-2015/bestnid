@@ -7,11 +7,17 @@ if(!(empty($_POST['nombre']))) {
   	$sql = "INSERT INTO categorias (idCategoria, nombre) values (NULL,'".$nombre."')";
 	$resultado= mysqli_query($conexion, $sql);
 	if ($resultado){
-			echo '<p"> Categoria '. "$nombre".' agregada </p> ';
+			//echo '<p"> Categoria '. "$nombre".' agregada </p> ';
+			  $salida = 'Categoria '. "$nombre".' agregada  ';
+			  $tipo= "Success";
+			  
+		
 		}
 	else{
-		echo '<p> EL nombre ya se encuentra en la base de datos o error en la misma</p> ';
+		$salida ='EL nombre ya se encuentra en la base de datos o error en la misma';
+		$tipo = "Error";
 	}
+	echo "<script> salida('$salida','$tipo');</script>";
 	mysqli_close($conexion);
 	}
 					

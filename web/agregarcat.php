@@ -9,20 +9,23 @@
 	
 
 	</body>
+
 		<div class="wrapper">
 			<div class="registro">
 				<p class="infoR"> ingresar nueva categoria</p>
 				<form method="post" name"form1" action="agregarcat.php" onsubmit ="return validarCategoria('categoria')"> 
-  
+  					
   					<input type="text" name='nombre' id="categoria"/> <br> <br>
-  					<input type="submit" name="boton" value="confirmar"/> 
+  					<input type="submit" name="boton" value="confirmar" class="Buttom"/> 
+  					<div id="salida"></div>
 
   				</form>
   				 <?php
   				 	include("modulos/agregar_categoria.php");
   				  ?>
 				</div>
-		
+				
+				
 		</div>
 		
 

@@ -2,6 +2,7 @@
 	<head>
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/registro.css" media="all">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/header.css" media="all">
+		<link type="text/css" id="global-css" rel="stylesheet" href="css/styles.css" media="all">
 		<script type="text/javascript" src="js/validarCategoria.js"></script> 
 	</head>
 	<body>
@@ -16,11 +17,12 @@
 					<br><br>
 					<p >Ingresar modificacion</p> <br><br>
 					<input type="text" name="nombre" id="categoria"/><br><br>
-					<input type="submit"  value="Modificar" name="boton"/ class="buttom"><br><br>
+					<input type="submit"  value="Modificar" name="boton"/ class="buttom">
+					<div id="salida"></div>
 					<?php
 						if(isset($salida)){
-							echo "$salida";
-	}
+						echo "<script> salida('$salida','$tipo');</script>";
+					}
 					?>
 			</form>
 			</div>

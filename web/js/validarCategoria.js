@@ -3,7 +3,7 @@ String.prototype.trim = function(){ return this.replace(/^\s+|\s+$/g,''); }
 function validarCategoria(formCategoria){
 	var nombreCategoria = document.getElementById(formCategoria).value.trim();
 	document.getElementById(formCategoria).value = nombreCategoria;
-	var soloLetras = /^[a-zA-Z]*(\s[a-zA-Z]*){0,1}$/; //{0,n-1} n=2=cantidad de palabras permitidas
+	var soloLetras = /^[a-zA-Z\u00E1\u00E9\u00ED\u00F3\u00FA]*(\s[a-zA-Z]*){0,1}$/; //{0,n-1} n=2=cantidad de palabras permitidas
 	
 	if(nombreCategoria.length < 2 || /^\s+$/.test(nombreCategoria)){
 		alert("El nombre de la categoría debe contener minímo 3 carácteres");
@@ -49,5 +49,18 @@ function validarSelectorYCategoria(formcategoria, selector){
 		}
 	}
 	return false;
+
+}
+
+function salida(textoSalida,tipo){
+	divSalida = document.querySelector("#salida");
+
+	divSalida.setAttribute('id',tipo);
+	divSalida.style.maxWidth = '200px';
+	divSalida.style.position = 'relative';
+	divSalida.style.top = '50px';
+	divSalida.style.right= '95px';
+	divSalida.innerHTML = textoSalida;
+
 
 }

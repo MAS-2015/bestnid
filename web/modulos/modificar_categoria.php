@@ -7,10 +7,12 @@
 		$sql="UPDATE `categorias` SET `nombre` = '$nombre' WHERE `idCategoria`='$idCategoria'";
 		$resultado= mysqli_query($conexion, $sql);
 		if($resultado){
-			$salida= "modificacion exitosa.";
+			$salida = "Modificacion exitosa.";
+			$tipo = "Success";
 		} 
 		else { 
-			$salida= "modificacion fallida.";
+			$salida = "Modificacion fallida.";
+			$tipo = "Error";
 		}
 	mysqli_close($conexion);
 }

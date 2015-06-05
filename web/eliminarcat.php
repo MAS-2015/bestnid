@@ -2,6 +2,7 @@
 	<head>
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/registro.css" media="all">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/header.css" media="all">
+		<link type="text/css" id="global-css" rel="stylesheet" href="css/styles.css" media="all">
 		<script type="text/javascript" src="js/validarCategoria.js"></script>
 	</head>
 	<body>
@@ -13,10 +14,12 @@
 					include("modulos/eli_categoria.php");
 					include("modulos/selector_categorias.php");
 					?>
-					<input type="submit"  value="Eliminar" name="boton"/><br><br>
+					<br>
+					<input type="submit"  value="Eliminar" name="boton" class="Buttom"/>
+					<div id="salida"></div>
 					<?php
 						if(isset($salida)){
-							echo "$salida";
+							echo "<script> salida('$salida','$tipo');</script>";
 	}
 					?>
 			</form>
