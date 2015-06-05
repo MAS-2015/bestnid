@@ -14,7 +14,7 @@
 					include("modulos/eli_categoria.php");
 					include("modulos/selector_categorias.php");
 					?>
-					<br>
+					<br><br>
 					<input type="submit"  value="Eliminar" name="boton" class="Buttom"/>
 					<div id="salida"></div>
 					<?php
@@ -24,9 +24,6 @@
 					?>
 			</form>
 			</div>
-		</div>
-		<div class="footer">
-				Copyright &copy; 2015 - Desarrollo Grupo MAS
 		</div>
 
 	</body>

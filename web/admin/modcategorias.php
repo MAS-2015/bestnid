@@ -27,9 +27,6 @@
 			</form>
 			</div>
 		</div>
-		<div class="footer">
-				Copyright &copy; 2015 - Desarrollo Grupo MAS
-		</div>
 
 	</body>
 </html>
