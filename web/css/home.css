@@ -2,6 +2,7 @@ a.link-categoria{
 	float:left;
 	margin: 5px 10px;
 	padding: 1px 5px;
+	width:100%;
 	color: black;
 	font-family: "Delius-Regular";
 	border: 3px inset red;
@@ -15,16 +16,22 @@ a.link-categoria:hover{
 }
 
 div.busqueda-categorias{
+	left:0px;
+	float:left;
 	box-sizing: border-box;
-	min-width:200px;
+	width:200px;
 	min-height: 80px;
-	width:100%;
-	padding: 5px 10px;
-	clear:both;
+	
+	padding-right:35px;
 }
 
 div.busqueda-categorias div{
 	width:100%;
+	height:auto;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	padding: 5px 10px;
+	padding-right:35px;
 }
 
 div.busqueda-categorias p{
@@ -37,6 +44,23 @@ div.msj{
 	margin-top: -90px;
 	float:right;
 	padding-right:200px;
-	font-weight: bold;
-	
+	font-weight: bold;	
+}
+
+div.muestra-subastas{
+	position:relative;
+	margin-left:200px;
+	box-sizing: border-box;
+	min-width:200px;
+	min-height: 80px;
+	width:80%;
+	padding: 5px 10px;
+}
+
+div.contenedor-muestras{
+	position:relative;
+	box-sizing: border-box;
+	min-width:550px;
+	min-height: 300px;
+	width:100%;
 }

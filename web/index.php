@@ -38,25 +38,27 @@
 					?>	
 				
 				</div>
-				<div class="muestra-subastas">
-				<?php
-					include_once("/modulos/funciones_detalle.php");
-					if(isset($_GET["categoria"])){
-						semi_detalles_PorCategoria(0,100,$_GET["categoria"]);
-					}
-					elseif(isset($_GET["titulo"])){
-						semi_detalles_PorTitulo(0,100,$_GET["titulo"]);
-					}
-					else{
-						semi_detalles_porDefecto(0,16);
-					}
-					
-				?>
-				</div>
-				<div class="busqueda-categorias">
-					<p>Categor&iacute;as:</p>
-					<div>
-						<?php include("/modulos/busqueda_categorias.php");?>
+				<div class="contenedor-muestras">
+					<div class="busqueda-categorias">
+						<p>Categor&iacute;as:</p>
+						<div>
+							<?php include("/modulos/busqueda_categorias.php");?>
+						</div>
+					</div>
+					<div class="muestra-subastas">
+					<?php
+						include_once("/modulos/funciones_detalle.php");
+						if(isset($_GET["categoria"])){
+							semi_detalles_PorCategoria(0,100,$_GET["categoria"]);
+						}
+						elseif(isset($_GET["titulo"])){
+							semi_detalles_PorTitulo(0,100,$_GET["titulo"]);
+						}
+						else{
+							semi_detalles_porDefecto(0,16);
+						}
+						
+					?>
 					</div>
 				</div>
 			</div>	
