@@ -7,7 +7,6 @@ if(!(empty($_POST['nombre']))) {
   	$sql = "INSERT INTO categorias (idCategoria, nombre) values (NULL,'".$nombre."')";
 	$resultado= mysqli_query($conexion, $sql);
 	if ($resultado){
-			//echo '<p"> Categoria '. "$nombre".' agregada </p> ';
 			  $salida = 'Categoria '. "$nombre".' agregada  ';
 			  $tipo= "Success";
 			  

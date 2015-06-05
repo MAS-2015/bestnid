@@ -1,0 +1,131 @@
+/* RESET DE ESTILOS*/
+
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	text-decoration:none;
+	font-weight: inherit;		
+	font-style: inherit;
+	font-size: 100%;
+	font-family: inherit;
+	vertical-align: baseline;
+}
+
+nav {
+	background-color:#232125;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	/* z index 100 para que el menu no choque con los otros divs del index */
+	z-index:100;
+	margin: 0 auto;
+	position: relative;
+	margin-bottom: 50px;
+	width: 450px;
+	
+}
+
+nav ul{
+	list-style:none;
+	
+
+}
+
+nav ul li {
+
+
+}
+
+
+nav > ul > li {
+	display: inline-block;
+
+}
+
+nav ul li a {
+	padding: 5px 5px;
+	text-decoration: none;
+	color: white;
+	display: block;
+	width:100%;
+	max-width: 100%;
+	padding-left: 10px;
+	text-shadow: 0 0 4px #000;
+	font-size: 15px;
+	font-weight: bold;
+	padding-right: 10px;
+	text-align: center;
+
+
+
+
+
+}
+
+
+
+nav ul li a:hover{
+	color:#b82828;
+	text-align: center;
+
+
+
+}
+
+
+
+
+nav > ul > li:hover div{
+	display:block;
+	text-align: center;
+	float:left;
+
+	
+}
+
+nav ul li div {
+	width:auto;
+	position:absolute;
+	/*background-color: #303030;*/
+	background-color: #232323;
+	box-sizing: border-box;
+	display:none;
+
+    
+	font-family:Arial;
+}
+
+nav ul li div ul {
+	box-sizing: border-box;
+	display: table-cell;
+    width:300px;
+
+	
+
+}
+
+nav ul li div ul li a{
+	float:left;
+    padding: 5px 5px;
+	box-sizing: border-box;
+	text-decoration: none;
+	color: white;
+	display: block;
+	width:150px;
+	text-shadow: 0 0 4px #000;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: left;
+	
+	padding-top: 10px;
+	padding-bottom: 10px;
+    
+}
+
+nav ul li div  ul  li a:hover{
+	text-align: left;
+	background-color:#141414;
+	width: 50%;
+	box-sizing: border-box;
+}
