@@ -6,7 +6,7 @@
 	$result=mysqli_query($conexion,$sql);
 	if(mysqli_num_rows($result) > 0){
 		session_start();
-		$_SESSION['Usuario'] = $user;
+		$_SESSION['Admin'] = $user;
 		$_SESSION['estado'] = "logeado";
 		header('Location: ../index.php');
 	}

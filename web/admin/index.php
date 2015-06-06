@@ -41,7 +41,7 @@
 				<div class="menu">
 
 					<?php
-						if (isset($_SESSION['Usuario'])){
+						if (isset($_SESSION['Admin'])){
 							include ('menu.php');
 						}
 							
