@@ -16,7 +16,7 @@
 					?>
 					<br><br>
 					<p >Ingresar modificaci&oacuten</p> <br>
-					<input type="text" name="nombre" id="categoria" placeholder="categoria"/><br><br>
+					<input type="text" name="nombre" id="categoria" placeholder="categoria"/><img src="../imagenes/ayuda.png"  Title="* M&iacute;nimo 3 caracteres. No se permiten caracteres especiales.M&aacute;ximo 2 palabras por categor&iacute;a" ><br><br>
 					<input type="submit"  value="Modificar" name="boton"/ class="buttom">
 					<div id="salida"></div>
 					<?php
