@@ -13,9 +13,9 @@
 
 		<div class="wrapper">
 			<div class="registro">
-				<p class="infoR"> ingresar nueva categoria</p>
+				<p class="infoR"> Ingresar nueva categor&iacute;a</p>
 				<form method="post" name"form1" action="operacion.php?op=altaCat" onsubmit ="return validarCategoria('categoria')">  
-  					<input type="text" name='nombre' id="categoria"/> <br> <br>
+  					<input type="text" name='nombre' id="categoria" placeholder="nueva categoria"/> <br> <br>
   					<input type="submit" name="boton" value="confirmar" class="Buttom"/> 
   					<div id="salida"></div>
 

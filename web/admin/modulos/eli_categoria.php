@@ -5,14 +5,14 @@
 		$sql = "SELECT * FROM `subastas` WHERE `idCategoria`= '$idCategoria'";
 		$resultado= mysqli_query($conexion, $sql);
 			if(mysqli_num_rows($resultado)>0){
-				$salida = "No se puede eliminar categoria, aun tiene subastas asociadas";
+				$salida = "No se puede eliminar categor&iacutea, a&uacuten tiene subastas asociadas";
 				$tipo = "Error";
 				}	
 			else{
 				$sql = "DELETE FROM `categorias` WHERE `idCategoria`='$idCategoria'";
 				$resultado= mysqli_query($conexion, $sql);
 					if($resultado){
-						$salida="eliminacion exitosa.";
+						$salida="Eliminaci&oacuten exitosa.";
 						$tipo= "Success";
 					}
 

@@ -8,7 +8,7 @@
 	<body>
 		<div class="wrapper">
 			<div class="registro">
-				<p class="infoR">Seleccionar categoria a eliminar</p>
+				<p class="infoR">Seleccionar categor&iacute;a a eliminar</p>
 				<form method="post" action="operacion.php?op=bajaCat" onsubmit="return validarSelector('selector')">
 					<?php 
 					include("modulos/eli_categoria.php");

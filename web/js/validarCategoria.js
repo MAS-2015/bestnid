@@ -3,20 +3,20 @@ String.prototype.trim = function(){ return this.replace(/^\s+|\s+$/g,''); }
 function validarCategoria(formCategoria){
 	var nombreCategoria = document.getElementById(formCategoria).value.trim();
 	document.getElementById(formCategoria).value = nombreCategoria;
-	var soloLetras = /^[a-zA-Z\u00E1\u00E9\u00ED\u00F3\u00FA]*(\s[a-zA-Z]*){0,1}$/; //{0,n-1} n=2=cantidad de palabras permitidas
+	var soloLetras = /^[a-zA-Z\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA\u00F1\u00D1]*(\s[a-zA-Z\u00E1\u00E9\u00ED\u00F3\u00FA\u00C1\u00C9\u00CD\u00D3\u00DA\u00F1\u00D1]*){0,1}$/; //{0,n-1} n=2=cantidad de palabras permitidas
 	
 	if(nombreCategoria.length < 2 || /^\s+$/.test(nombreCategoria)){
-		alert("El nombre de la categoría debe contener minímo 3 carácteres");
+		alert("El nombre de la categor\u00EDa debe contener min\u00EDmo 3 caracteres");
 		return false;
 	
 	}
 	else if (/^[a-zA-Z]\s.*$/.test(nombreCategoria) ){
-			alert("la primer palabra debe contener al menos 2 caracteres");
+			alert("La primer palabra debe contener al menos 2 caracteres");
 			return false;
 		}
 
 	else if(!(soloLetras.test(nombreCategoria))){
-		alert("El nombre de la categoria no debe contener caracteres especiales o mas de 2 palabras");
+		alert("El nombre de la categor\u00EDa no debe contener caracteres especiales o m\u00E1s de 2 palabras");
 		return false;
 	}
 	return true;
@@ -25,7 +25,7 @@ function validarCategoria(formCategoria){
 function validarSelector(selector){
 	indice = document.getElementById(selector).selectedIndex;
 	if (indice == null || indice == 0){
-		alert("Debe seleccionar una categoria");
+		alert("Debe seleccionar una categor\u00EDa");
 		return false;
 	}
 	return true;

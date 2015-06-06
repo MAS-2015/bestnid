@@ -8,15 +8,15 @@
 	<body>
 		<div class="wrapper">
 			<div class="registro">
-				<p class="infoR">Seleccionar categoria a modificar</p>
+				<p class="infoR">Seleccionar categor&iacute;a a modificar</p>
 				<form method="post" action="operacion.php?op=modCat" onsubmit ="return validarSelectorYCategoria('categoria','selector')">
 					<?php 
 					include("modulos/modificar_categoria.php");
 					include("modulos/selector_categorias.php");
 					?>
 					<br><br>
-					<p >Ingresar modificacion</p> <br><br>
-					<input type="text" name="nombre" id="categoria"/><br><br>
+					<p >Ingresar modificaci&oacuten</p> <br>
+					<input type="text" name="nombre" id="categoria" placeholder="categoria"/><br><br>
 					<input type="submit"  value="Modificar" name="boton"/ class="buttom">
 					<div id="salida"></div>
 					<?php
