@@ -10,23 +10,6 @@ function semi_detalles_PorCategoria($inicio,$maximo,$idCategoria){
 		while($fila = mysqli_fetch_assoc($resultado)){
 			semi_detalle($fila['idSubasta']);
 		}
-		if($maximo){
-			$sql="SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`idCategoria` =".$idCategoria." ORDER BY `fechaFin` DESC LIMIT 0,".$maximo;
-			$resultado= mysqli_query($conexion, $sql);
-			while($fila = mysqli_fetch_assoc($resultado)){
-				semi_detalle($fila['idSubasta']);
-			}
-		}
-	}else{
-		$sql = "SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`idCategoria` =".$idCategoria." LIMIT ".$inicio.','.$maximo;
-		$resultado= mysqli_query($conexion, $sql);
-		if(mysqli_num_rows($resultado) > 0){
-			while($fila = mysqli_fetch_assoc($resultado)){
-				semi_detalle($fila['idSubasta']);
-			}
-		}else{
-			echo 'No se han encontrado resultados de esa categor&iacute;a';
-		}
 	}
 }
 
@@ -61,27 +44,6 @@ function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 			while($fila = mysqli_fetch_assoc($resultado)){
 				semi_detalle($fila['idSubasta']);
 			}
-			if($maximo){
-				$where =" WHERE `fechaFin` < Now() AND ( ";
-				$orden = " ORDER BY `fechaFin` DESC ";
-				$sql= $select.$where.$titulos.$orden." LIMIT 0,".$maximo;
-				$resultado= mysqli_query($conexion, $sql);
-				while($fila = mysqli_fetch_assoc($resultado)){
-					semi_detalle($fila['idSubasta']);
-				}
-			}
-		}else{
-			$where =" WHERE `fechaFin` < Now() AND ( ";
-			$orden = " ORDER BY `fechaFin` DESC ";
-			$sql= $select.$where.$titulos.$orden." LIMIT ".$inicio.','.$maximo;
-			$resultado= mysqli_query($conexion, $sql);
-			if(mysqli_num_rows($resultado) > 0){
-				while($fila = mysqli_fetch_assoc($resultado)){
-					semi_detalle($fila['idSubasta']);
-				}
-			}else{
-				echo 'No se han encontrado resultados en esta b&uacute;squeda';
-			}
 		}
 	}
 }
@@ -93,13 +55,6 @@ function semi_detalles_porDefecto($inicio,$maximo){
 	$maximo-=mysqli_num_rows($resultado);
 	while($fila = mysqli_fetch_assoc($resultado)){
 		semi_detalle($fila['idSubasta']);
-	}
-	if($maximo){
-		$sql="SELECT * FROM `subastas` WHERE `fechaFin` < Now() ORDER BY `fechaFin` DESC LIMIT 0,".$maximo;
-		$resultado= mysqli_query($conexion, $sql);
-		while($fila = mysqli_fetch_assoc($resultado)){
-			semi_detalle($fila['idSubasta']);
-		}
 	}
 }
 
