@@ -18,7 +18,7 @@
 	$resultado = mysqli_query($conexion, $select);
 	while($tuplaPregunta = mysqli_fetch_row($resultado)){
 		echo "<div class = \"singularidad\" >
-					<div class=\"pregunta\" onmouseover=\";\" onmouseout=\";\"id=\"pregunta".$tuplaPregunta[4]."\">
+					<div class=\"pregunta\" id=\"pregunta".$tuplaPregunta[4]."\">
 						<div class = \"headPregunta\" >
 							<p class=\"infoHead\">hecha el ".$tuplaPregunta[1]."</p>
 						</div>

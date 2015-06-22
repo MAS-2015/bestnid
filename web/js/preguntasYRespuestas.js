@@ -8,7 +8,6 @@ function enviar(form){
 		alert("La respuesta no debe ser vac\u00EDa");
 	}
 	else{
-		alert("enviando el subbwacho");
 		form.submit();
 	}
 }
