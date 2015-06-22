@@ -10,23 +10,6 @@ function semi_detalles_PorCategoria($inicio,$maximo,$idCategoria){
 		while($fila = mysqli_fetch_assoc($resultado)){
 			semi_detalle($fila['idSubasta']);
 		}
-		if($maximo){
-			$sql="SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`idCategoria` =".$idCategoria." ORDER BY `fechaFin` DESC LIMIT 0,".$maximo;
-			$resultado= mysqli_query($conexion, $sql);
-			while($fila = mysqli_fetch_assoc($resultado)){
-				semi_detalle($fila['idSubasta']);
-			}
-		}
-	}else{
-		$sql = "SELECT * FROM `subastas` WHERE `fechaFin` < Now() AND `subastas`.`idCategoria` =".$idCategoria." LIMIT ".$inicio.','.$maximo;
-		$resultado= mysqli_query($conexion, $sql);
-		if(mysqli_num_rows($resultado) > 0){
-			while($fila = mysqli_fetch_assoc($resultado)){
-				semi_detalle($fila['idSubasta']);
-			}
-		}else{
-			echo 'No se han encontrado resultados de esa categor&iacute;a';
-		}
 	}
 }
 
@@ -61,27 +44,6 @@ function semi_detalles_PorTitulo($inicio,$maximo,$titulo){
 			while($fila = mysqli_fetch_assoc($resultado)){
 				semi_detalle($fila['idSubasta']);
 			}
-			if($maximo){
-				$where =" WHERE `fechaFin` < Now() AND ( ";
-				$orden = " ORDER BY `fechaFin` DESC ";
-				$sql= $select.$where.$titulos.$orden." LIMIT 0,".$maximo;
-				$resultado= mysqli_query($conexion, $sql);
-				while($fila = mysqli_fetch_assoc($resultado)){
-					semi_detalle($fila['idSubasta']);
-				}
-			}
-		}else{
-			$where =" WHERE `fechaFin` < Now() AND ( ";
-			$orden = " ORDER BY `fechaFin` DESC ";
-			$sql= $select.$where.$titulos.$orden." LIMIT ".$inicio.','.$maximo;
-			$resultado= mysqli_query($conexion, $sql);
-			if(mysqli_num_rows($resultado) > 0){
-				while($fila = mysqli_fetch_assoc($resultado)){
-					semi_detalle($fila['idSubasta']);
-				}
-			}else{
-				echo 'No se han encontrado resultados en esta b&uacute;squeda';
-			}
 		}
 	}
 }
@@ -93,13 +55,6 @@ function semi_detalles_porDefecto($inicio,$maximo){
 	$maximo-=mysqli_num_rows($resultado);
 	while($fila = mysqli_fetch_assoc($resultado)){
 		semi_detalle($fila['idSubasta']);
-	}
-	if($maximo){
-		$sql="SELECT * FROM `subastas` WHERE `fechaFin` < Now() ORDER BY `fechaFin` DESC LIMIT 0,".$maximo;
-		$resultado= mysqli_query($conexion, $sql);
-		while($fila = mysqli_fetch_assoc($resultado)){
-			semi_detalle($fila['idSubasta']);
-		}
 	}
 }
 
@@ -113,7 +68,7 @@ function semi_detalle($idSubasta){
 		<div class="semi-detalle-container">
 			<a href="detalles.php?id='.$fila['idSubasta'].'">
 				<div class="semi-detalle-imagen"><img src="'. $fila['imagen'].'"></div>
-				<div class="semi-detalle-titulo"><span>'.$fila['titulo'].'</span></div>
+				<div class="semi-detalle-titulo"><span>'.utf8_decode($fila['titulo']).'</span></div>
 				<div class="semi-detalle-countdown">'.($terminada?countdown(strtotime($fila['fechaFin'])):'<p>SUBASTA TERMINADA</p>').'</div>
 			</a>
 		</div>
@@ -140,17 +95,14 @@ function get_info_producto($idSubasta){
 	$sql = " SELECT `idSubasta`,`fechaInicio`,`fechaFin`,`titulo`,`descripcion`,`imagen`,`idCategoria`,`idUsuario`, Now() AS now FROM `subastas` WHERE `idSubasta` =".$idSubasta;	
 	$resultado= mysqli_query($conexion, $sql);
 	$fila = mysqli_fetch_assoc($resultado);
-	$sqlUser = "SELECT `nombreApellido` FROM `usuarios` WHERE `idUsuario` = " .$fila["idUsuario"];
-	$nombreUsuario= mysqli_fetch_assoc( mysqli_query($conexion, $sqlUser))["nombreApellido"];
 	$sqlCategoria="SELECT * FROM `categorias` WHERE `idCategoria` = ". $fila["idCategoria"];
 	$resultado= mysqli_query($conexion, $sqlCategoria);
 	$categoria= mysqli_fetch_assoc($resultado);
 	$terminada=($fila['fechaFin'])>$fila['now'];
 	echo'
-		<h1 class="titulo">'.$fila["titulo"].'</h1>
-		<img src="'. $fila['imagen'].'">
+		<h1 class="titulo">'.utf8_decode($fila["titulo"]).'</h1>
+		<img src="'. utf8_decode($fila['imagen']).'">
 		<div class="info-lateral">
-			<span>Subastador:</span> '.$nombreUsuario.'<br>
 			<span>Fecha publicaci&oacute;n: </span> '.$fila["fechaInicio"].'<br>
 			<span>Fecha cierre de subasta: </span> '.$fila["fechaFin"].'<br>
 			<span>Tiempo restante de subasta: </span> <br>
@@ -162,7 +114,7 @@ function get_info_producto($idSubasta){
 		<div class="info-descripcion">
 			<span>Descripci&oacute;n:</span><br>
 			<p>
-				'.$fila["descripcion"].'
+				'.utf8_decode($fila["descripcion"]).'
 			</p>
 		</div>';
 }

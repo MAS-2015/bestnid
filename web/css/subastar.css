@@ -1,0 +1,62 @@
+
+div.registro{
+	padding-top: 15px;
+	margin: 0 auto ;
+	height: auto;
+	padding: 25px;
+	background: rgba( 73, 73, 73, 0.616 );
+	width: 350px;
+	padding-bottom: 15px;
+	border-radius: 25px;
+	border:2px solid black;
+	color:white;
+}
+
+div.registro form{
+	margin:0 auto;
+	margin-top: 25px;
+	width: 100%;
+	font-family: "Delius-Regular";
+
+}
+
+#enviar{
+	margin:0 auto;
+}
+
+span.oblig{
+	color: #680c07;
+	height: 20px;
+}
+
+p.infoR{
+	text-align: left;
+	padding-left: 25px;
+	font-family: "Delius-Regular";
+}
+
+form.reg input[type=text]{
+	height: 40px;
+}
+
+input,select,option{
+	padding-right: 2px;
+	border-radius: 5px;
+	padding-left: 2px;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+
+textarea{
+	max-width:100%;
+	width:100%;
+}
+
+form.reg{
+	width:100%;
+}
+
+form input{
+	width:100%;
+}
