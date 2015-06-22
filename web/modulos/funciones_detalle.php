@@ -170,4 +170,21 @@ function get_PreguntasYRespuestas_producto($idSubasta){
 	//implementar mas tarde
 	echo 'PROXIMAMENTE';
 }
+function buscarIdUsuarioPorEmail($user){
+	include("modulos/conexion.php");
+	$sql = "SELECT `idUsuario` FROM `usuarios` WHERE `email` ='".$user."'";
+	$resultado = mysqli_query($conexion,$sql);
+	$fila = mysqli_fetch_row($resultado);
+	return $fila[0];
+
+}
+function buscarIdUsuarioPorIdSubasta($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT `idUsuario` FROM `subastas` WHERE `IdSubasta` =".$idSubasta;
+	$resultado = mysqli_query($conexion,$sql);
+	$fila = mysqli_fetch_row($resultado);
+	return $fila[0];
+
+}
+
 ?>

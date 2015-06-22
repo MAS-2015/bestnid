@@ -30,6 +30,7 @@
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/detalles.css" media="all">
 		<link rel="icon" type="image/png" href="imagenes/favicon.png">
 		<script src="scripts/countdown.js"></script>
+		<script type="text/javascript" src="js/preguntasYRespuestas.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>	
 	</head>
 
@@ -50,12 +51,22 @@
 					}
 				?>
 				</div>
-				<div class="preguntas-subasta">
+				<div class="preguntas-subasta" id="preguntasSubasta">
 					<span>Preguntas y Respuestas:</span><br>
 				<?php
 					if($idSubasta != -1){
-						get_PreguntasYRespuestas_producto($idSubasta);
+						include("modulos/preguntasyrespuestas.php");
 					}
+
+					if(isset($user)){
+						$idUsuarioSubasta= buscarIdUsuarioPorIdSubasta($idSubasta);
+						$idUsuario = buscarIdUsuarioPorEmail($user);
+						
+						if($idUsuarioSubasta != $idUsuario){	
+							include("preguntas.php");
+						}
+					}
+
 				?>
 				</div>
 			</div>	

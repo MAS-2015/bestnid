@@ -123,3 +123,137 @@ div.preguntas-subasta{
 	box-shadow: 0px 0px 10px 0px black;
 	box-sizing: border-box;
 }
+
+div.singularidad{
+	padding: 0px;
+	padding-left: 0px;
+	width: 80%;
+	height:auto;
+	margin-left:1%;
+	margin-top:1%;
+	margin-bottom:1%;
+	
+}
+div.pregunta{
+	margin-left:0%;
+	margin-top:0%;
+	margin-bottom:0%;
+	margin-right: 0%;
+	border: solid black 2px;
+}
+div.preguntaConResponder{
+	margin-left:0%;
+	margin-top:0%;
+	margin-bottom:0%;
+	margin-right: 0%;
+	border: solid black 2px;
+}
+div.headPregunta{
+	
+	height:4%;
+	margin-left:0%;
+	margin-top:0%;
+	margin-bottom:0%;
+	background-color: #b82828;
+	border: solid black 2px;
+}
+
+div.bodyPregunta{
+	padding-top: 3%;
+	padding-left: 1%;
+	
+}
+div.respuesta{
+	position: relative;
+	left: 5%;
+	bottom: 15px;
+	width:95%;
+
+	border: solid black 2px;
+}
+div.headRespuesta{
+	height:4%;
+	margin-left:0%;
+	margin-top:0%;
+	margin-bottom:0%;
+	background-color: rgb(180,190,209);
+	border: solid black 2px;
+
+}
+div.bodyRespuesta{
+	padding-top: 3%;
+	padding-left: 1%;
+	padding-bottom:2%;
+}
+div.responder{
+
+}
+form.formResponder{
+
+}
+textarea.textoRespuesta{
+	display: none;
+	padding-right: 2px;
+	border-radius: 5px;
+	padding-left: 2px;
+	width: 75%;
+	height: 10%;
+	margin-bottom: 5px;
+
+}
+button.reply{
+
+	visibility: hidden;
+	background:#b82828;
+	border-radius:8px;
+	width:auto;
+	height:auto;
+	font-weight:bold;
+    color:#d9d1a5;
+	margin:0 auto;
+	margin-right: 3%;
+	padding: 3px;
+}
+button.cancel{
+	display: inline;
+	visibility: hidden;
+	background:#b82828;
+	border-radius:8px;
+	width:auto;
+	height:auto;
+	font-weight:bold;
+    color:#d9d1a5;
+	margin:0 auto;
+	padding: 3px;
+
+}
+
+p.infoBody{
+}
+
+p.infoHead{
+	text-align: right;
+	font-weight: bold;
+}
+#preguntas{
+
+}
+#textoPregunta{
+	padding-right: 2px;
+	border-radius: 5px;
+	padding-left: 2px;
+	width: 75%;
+	height: 10%;
+	margin-bottom: 5px;
+}
+#botonPregunta{
+	background:#b82828;
+	border-radius:8px;
+	width:auto;
+	height:auto;
+	font-weight:bold;
+    color:#d9d1a5;
+	margin:0 auto;
+	margin-right: 3%;
+	padding: 3px;
+}
