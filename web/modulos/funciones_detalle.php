@@ -95,7 +95,6 @@ function get_info_producto($idSubasta){
 	$sql = " SELECT `idSubasta`,`fechaInicio`,`fechaFin`,`titulo`,`descripcion`,`imagen`,`idCategoria`,`idUsuario`, Now() AS now FROM `subastas` WHERE `idSubasta` =".$idSubasta;	
 	$resultado= mysqli_query($conexion, $sql);
 	$fila = mysqli_fetch_assoc($resultado);
-	$idUsuario=$fila["idUsuario"];
 	$sqlCategoria="SELECT * FROM `categorias` WHERE `idCategoria` = ". $fila["idCategoria"];
 	$resultado= mysqli_query($conexion, $sqlCategoria);
 	$categoria= mysqli_fetch_assoc($resultado);
@@ -123,7 +122,8 @@ function get_info_producto($idSubasta){
 		echo '<div class="oferta" id="oferta">
 		';
 		if(isset($_SESSION["Usuario"])){
-			if(buscarIdUsuarioPorIdSubasta($idSubasta) == buscarIdUsuarioPorEmail($_SESSION["Usuario"]) ){
+			$idUsuario=buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
+			if(buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario ){
 				if($terminada){
 					echo '
 					<form action=""><br>
@@ -136,15 +136,13 @@ function get_info_producto($idSubasta){
 			elseif(!$terminada){
 				$oferta=usuarioOfertoEn($idUsuario,$idSubasta);
 				if($oferta){
-					echo '<button class="buttom" onclick="getFormOfertaEdit('.$oferta.')" >Editar oferta</button><br>';
+					echo '<button class="buttom" onclick="getFormOfertaEdit('.$oferta.')" >Ver/Editar oferta</button><br>';
 				}
 				else{
 					echo '<button class="buttom" onclick="getFormOferta()" >Ofertar</button><br>';
 				}
 			}
 		}
-		else{ echo '<br><div>no esta seteada la sesion</div></br>' ;}
-		
 		echo '</div>';
 }
 

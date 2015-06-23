@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	include("conexion.php");
 	if(is_numeric($_POST["precio"])){
 		$precio= $_POST["precio"];
@@ -6,9 +7,9 @@
 		$idSubasta = $_POST["idSubasta"];
 		include('funciones_detalle.php');
 		chdir('../');
-		$idUsuario = buscarIdUsuarioPorIdSubasta($idSubasta);
+		$idUsuario = buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
 		if(isset($_POST["idOferta"])){
-			$sql= "UPDATE Ofertas SET precio='".$precio."', motivo = '".$motivo."' WHERE idOferta='".$_POST["idOferta"]."'";
+			$sql= "UPDATE Ofertas SET precio='".$precio."', motivo = '".$motivo."', fecha = NOW() WHERE idOferta='".$_POST["idOferta"]."'";
 		}
 		else{
 			$sql= "INSERT INTO Ofertas (idOferta, fecha, precio, motivo, idUsuario, idSubasta) VALUES (NULL, NOW(), '".$precio."', '".$motivo."','".$idUsuario."','".$idSubasta."')";
