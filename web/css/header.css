@@ -173,3 +173,9 @@ div.footer{
 	text-align: center;
 }
 
+div.login a{
+	color: #b82828;
+	text-shadow: 1px 1px #000000;
+	font-size: 15px;
+	font-weight: bold;
+}
