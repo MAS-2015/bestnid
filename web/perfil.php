@@ -39,7 +39,7 @@
 					<img src="imagenes/miperfil.png">
 					<nav>
 						<ul>
-						<li><a href=''>Mis Ofertas</a></li>
+						<li><a href='perfil.php?op=ofertas'>Mis Ofertas</a></li>
 						<li><a href=''>Mis Compras</a></li>
 						<li><a href='perfil.php?op=subastas'>Mis Subastas</a></li>
 						<li><a href='perfil.php?op=mispreguntas'>Mis Preguntas</a></li>
@@ -55,7 +55,7 @@
 							$op=$_GET['op'];
 							switch ($op) {
 							case 'ofertas':
-								include 'ofertas.php';
+								include 'perfil/ofertas.php';
 								break;
 							case 'compras':
 								include 'compras.php';
