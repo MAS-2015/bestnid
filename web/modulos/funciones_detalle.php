@@ -110,6 +110,18 @@ function get_info_producto($idSubasta){
 			<br>
 			<span>Categor&iacute;a:</span> <a class="link-categoria" style="float:none;" href="index.php?categoria='.$categoria["idCategoria"].'" >'.$categoria["nombre"].'</a><br><br>
 			';
+		if(isset($_SESSION["Usuario"])){
+			$idUsuario=buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
+			if( (buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario) && subastaEditable($idSubasta) && !$terminada){
+				echo '
+				<button class="buttom" href="formEditarSubasta.php" >Editar subasta</button><br><br>
+				<form method="POST" action="modulos/eliminarSubasta.php" onsubmit=" return confirm(\'Est&aacute; seguro?\');" >
+					<input type="hidden" class="buttom" name="idSubasta" value="'.$idSubasta.'"></input>
+					<input type="submit" class="buttom" name="eliminar" value="Eliminar subasta"></input><br><br>
+				</form>
+				';
+			}
+		}
 		echo '
 		</div>
 		<div class="info-descripcion">
@@ -125,7 +137,12 @@ function get_info_producto($idSubasta){
 			$idUsuario=buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
 			if(buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario ){
 				if(!subastaConGanador($idSubasta) ){
-					echo '<button class="buttom" onclick="getFormGanador();" >'.($terminada?"Elegir ganador":"Ver ofertas").'</button><br>';
+					if(cantidadOfertasEnSubasta($idSubasta) == 0 ){
+						echo '<br><p>Todav&iacute;a no ofert&oacute; nadie en esta subasta</p>';
+					}
+					else{
+						echo '<button class="buttom" onclick="getFormGanador();" >'.($terminada?"Elegir ganador":"Ver ofertas").'</button><br>';
+					}
 				}
 			}
 			elseif(!$terminada){
@@ -141,6 +158,10 @@ function get_info_producto($idSubasta){
 		echo '</div>';
 }
 
+function dueñoSubasta($idUsuario,$idSubasta){
+	return (buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario);
+}
+
 function usuarioOfertoEn($idUsuario,$idSubasta){
 	include("modulos/conexion.php");
 	$sql = "SELECT * FROM `ofertas` WHERE `idUsuario` = '".$idUsuario."' AND `idSubasta`='".$idSubasta."'";
@@ -152,6 +173,13 @@ function usuarioOfertoEn($idUsuario,$idSubasta){
 		return false;
 	}
 }
+function cantidadOfertasEnSubasta($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM `ofertas` WHERE `idSubasta` = '".$idSubasta."'";
+	$resultado = mysqli_query($conexion,$sql);
+	return mysqli_num_rows($resultado);
+}
+
 function subastaConGanador($idSubasta){
 	include("modulos/conexion.php");
 	$sql = "SELECT * FROM `subastas` WHERE `idSubasta` = '".$idSubasta."' AND `idOfertaGanadora` is NOT NULL";
@@ -171,6 +199,19 @@ function subastaTerminada($idSubasta){
 	return ($fila['fechaFin'] < $fila['now']);
 }
 
+function subastaEditable($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM ofertas WHERE `idSubasta` = ".$idSubasta;	
+	$resultadoOfertas= mysqli_query($conexion, $sql);
+	$sql = "SELECT * FROM preguntas WHERE `idSubasta` = ".$idSubasta;
+	$resultadoPreguntas= mysqli_query($conexion, $sql);
+	if((mysqli_num_rows($resultadoOfertas) == 0) && (mysqli_num_rows($resultadoPreguntas) == 0) && !(subastaTerminada($idSubasta)) ){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
 
 function get_PreguntasYRespuestas_producto($idSubasta){
 	//implementar mas tarde
