@@ -124,22 +124,17 @@ function get_info_producto($idSubasta){
 		if(isset($_SESSION["Usuario"])){
 			$idUsuario=buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
 			if(buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario ){
-				if($terminada){
-					echo '
-					<form action=""><br>
-					<input type="hidden" name="id" value="'.$idSubasta.'">
-					</input><input class="buttom" type="submit" value="Elegir ganador" ></input>
-					</form><br>
-					';
+				if(!subastaConGanador($idSubasta) ){
+					echo '<button class="buttom" onclick="getFormGanador();" >'.($terminada?"Elegir ganador":"Ver ofertas").'</button><br>';
 				}
 			}
 			elseif(!$terminada){
 				$oferta=usuarioOfertoEn($idUsuario,$idSubasta);
 				if($oferta){
-					echo '<button class="buttom" onclick="getFormOfertaEdit('.$oferta.')" >Ver/Editar oferta</button><br>';
+					echo '<button class="buttom" onclick="getFormOfertaEdit('.$oferta.');" >Ver oferta</button><br>';
 				}
 				else{
-					echo '<button class="buttom" onclick="getFormOferta()" >Ofertar</button><br>';
+					echo '<button class="buttom" onclick="getFormOferta();" >Ofertar</button><br>';
 				}
 			}
 		}
@@ -157,6 +152,25 @@ function usuarioOfertoEn($idUsuario,$idSubasta){
 		return false;
 	}
 }
+function subastaConGanador($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM `subastas` WHERE `idSubasta` = '".$idSubasta."' AND `idOfertaGanadora` is NOT NULL";
+	$resultado = mysqli_query($conexion,$sql);
+	if(mysqli_num_rows($resultado) == 1 ){
+		$fila = mysqli_fetch_assoc($resultado);
+		return $fila["idOfertaGanadora"];
+	}else{
+		return false;
+	}
+}
+function subastaTerminada($idSubasta){
+	include("modulos/conexion.php");
+	$sql = " SELECT `fechaFin`, Now() AS now FROM `subastas` WHERE `idSubasta` =".$idSubasta;	
+	$resultado= mysqli_query($conexion, $sql);
+	$fila=mysqli_fetch_assoc($resultado);
+	return ($fila['fechaFin'] < $fila['now']);
+}
+
 
 function get_PreguntasYRespuestas_producto($idSubasta){
 	//implementar mas tarde

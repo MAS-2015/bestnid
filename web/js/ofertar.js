@@ -34,3 +34,16 @@ function getFormOfertaEdit( idOferta){
 	});
 	document.getElementById("oferta").focus();
 }
+
+function getFormGanador(){
+	var id = getVarsUrl().id;
+	$.post("formGanador.php",
+	{
+		idSubasta: id,
+	},
+	function(data, status){
+		document.getElementById("oferta").innerHTML = data;
+	});
+	document.getElementById("oferta").focus();
+
+}

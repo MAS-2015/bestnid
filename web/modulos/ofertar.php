@@ -9,10 +9,10 @@
 		chdir('../');
 		$idUsuario = buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
 		if(isset($_POST["idOferta"])){
-			$sql= "UPDATE Ofertas SET precio='".$precio."', motivo = '".$motivo."', fecha = NOW() WHERE idOferta='".$_POST["idOferta"]."'";
+			$sql= "UPDATE ofertas SET precio='".$precio."', motivo = '".$motivo."', fecha = NOW() WHERE idOferta='".$_POST["idOferta"]."'";
 		}
 		else{
-			$sql= "INSERT INTO Ofertas (idOferta, fecha, precio, motivo, idUsuario, idSubasta) VALUES (NULL, NOW(), '".$precio."', '".$motivo."','".$idUsuario."','".$idSubasta."')";
+			$sql= "INSERT INTO ofertas (idOferta, fecha, precio, motivo, idUsuario, idSubasta) VALUES (NULL, NOW(), '".$precio."', '".$motivo."','".$idUsuario."','".$idSubasta."')";
 		}
 		$resultado= mysqli_query($conexion, $sql);
 		mysqli_close($conexion);
