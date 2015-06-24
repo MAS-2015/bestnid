@@ -11,7 +11,7 @@
 	$targetdir='imagenes/subastas/';
 	$dia= 86400;
 	$fechaInicio= date ("Y-m-d", time());
-	$fechaFin= date ("Y-m-d", time() + (($tiempo-1) * $dia));
+	$fechaFin= date ("Y-m-d", time() + ($tiempo * $dia));
 	$error=false;
 	$msg='';
 	
