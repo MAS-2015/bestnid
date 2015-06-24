@@ -1,0 +1,15 @@
+form.oferta{
+	border: initial;
+	padding: 5px 10px;
+	box-sizing: border-box;
+}
+
+form.oferta fieldset{
+	border: 2px solid gray;
+	padding: 15px 8px;
+	margin-bottom: 10px;
+}
+
+form.oferta p{
+	margin-bottom: 10px;
+}

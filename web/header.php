@@ -17,7 +17,11 @@
 				$user= $_SESSION['Usuario'];
 				echo"<div class=\"login\">Bienvenido $user";
 				echo"<br>";
-				echo"<form method='post' action='modulos/cerrar.php'><input class=\"buttom\"  type=\"submit\" value=\"Salir\"></form>";
+				echo"<a href='perfil.php'>Mi Perfil</a>";
+				echo" | ";
+				echo"<a href='subastar.php'>Subastar</a>";
+				echo" | ";
+				echo"<a href='modulos/cerrar.php'>Salir</a>";
 				echo "</div>";
 			} else {
 				include ('formlogin.php');

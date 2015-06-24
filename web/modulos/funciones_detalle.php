@@ -98,7 +98,7 @@ function get_info_producto($idSubasta){
 	$sqlCategoria="SELECT * FROM `categorias` WHERE `idCategoria` = ". $fila["idCategoria"];
 	$resultado= mysqli_query($conexion, $sqlCategoria);
 	$categoria= mysqli_fetch_assoc($resultado);
-	$terminada=($fila['fechaFin'])>$fila['now'];
+	$terminada=($fila['fechaFin'])<$fila['now'];
 	echo'
 		<h1 class="titulo">'.utf8_decode($fila["titulo"]).'</h1>
 		<img src="'. utf8_decode($fila['imagen']).'">
@@ -106,18 +106,113 @@ function get_info_producto($idSubasta){
 			<span>Fecha publicaci&oacute;n: </span> '.$fila["fechaInicio"].'<br>
 			<span>Fecha cierre de subasta: </span> '.$fila["fechaFin"].'<br>
 			<span>Tiempo restante de subasta: </span> <br>
-			<div class="contenedor-countdown"><div class="detalle-countdown">'.($terminada?countdown(strtotime($fila['fechaFin'])):'<p>SUBASTA TERMINADA</p>').'</div></div>
-			'.($terminada?'<form><input class="buttom" type="button" href="#" value="Ofertar" ></input></form><br>':'').'
+			<div class="contenedor-countdown"><div class="detalle-countdown">'.(!$terminada?countdown(strtotime($fila['fechaFin'])):'<p>SUBASTA TERMINADA</p>').'</div></div>
 			<br>
-			<span>Categor&iacute;a:</span> <a class="link-categoria" style="float:none;" href="index.php?categoria='.$categoria["idCategoria"].'" >'.$categoria["nombre"].'</a><br>
+			<span>Categor&iacute;a:</span> <a class="link-categoria" style="float:none;" href="index.php?categoria='.$categoria["idCategoria"].'" >'.$categoria["nombre"].'</a><br><br>
+			';
+		if(isset($_SESSION["Usuario"])){
+			$idUsuario=buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
+			if( (buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario) && subastaEditable($idSubasta) && !$terminada){
+				echo '
+				<button class="buttom" href="formEditarSubasta.php" >Editar subasta</button><br><br>
+				<form method="POST" action="modulos/eliminarSubasta.php" onsubmit=" return confirm(\'Est&aacute; seguro?\');" >
+					<input type="hidden" class="buttom" name="idSubasta" value="'.$idSubasta.'"></input>
+					<input type="submit" class="buttom" name="eliminar" value="Eliminar subasta"></input><br><br>
+				</form>
+				';
+			}
+		}
+		echo '
 		</div>
 		<div class="info-descripcion">
 			<span>Descripci&oacute;n:</span><br>
 			<p>
 				'.utf8_decode($fila["descripcion"]).'
 			</p>
-		</div>';
+		</div><br>
+		';
+		echo '<div class="oferta" id="oferta">
+		';
+		if(isset($_SESSION["Usuario"])){
+			$idUsuario=buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
+			if(buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario ){
+				if(!subastaConGanador($idSubasta) ){
+					if(cantidadOfertasEnSubasta($idSubasta) == 0 ){
+						echo '<br><p>Todav&iacute;a no ofert&oacute; nadie en esta subasta</p>';
+					}
+					else{
+						echo '<button class="buttom" onclick="getFormGanador();" >'.($terminada?"Elegir ganador":"Ver ofertas").'</button><br>';
+					}
+				}
+			}
+			elseif(!$terminada){
+				$oferta=usuarioOfertoEn($idUsuario,$idSubasta);
+				if($oferta){
+					echo '<button class="buttom" onclick="getFormOfertaEdit('.$oferta.');" >Ver oferta</button><br>';
+				}
+				else{
+					echo '<button class="buttom" onclick="getFormOferta();" >Ofertar</button><br>';
+				}
+			}
+		}
+		echo '</div>';
 }
+
+function dueñoSubasta($idUsuario,$idSubasta){
+	return (buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario);
+}
+
+function usuarioOfertoEn($idUsuario,$idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM `ofertas` WHERE `idUsuario` = '".$idUsuario."' AND `idSubasta`='".$idSubasta."'";
+	$resultado = mysqli_query($conexion,$sql);
+	if(mysqli_num_rows($resultado) == 1 ){
+		$fila = mysqli_fetch_assoc($resultado);
+		return $fila["idOferta"];
+	}else{
+		return false;
+	}
+}
+function cantidadOfertasEnSubasta($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM `ofertas` WHERE `idSubasta` = '".$idSubasta."'";
+	$resultado = mysqli_query($conexion,$sql);
+	return mysqli_num_rows($resultado);
+}
+
+function subastaConGanador($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM `subastas` WHERE `idSubasta` = '".$idSubasta."' AND `idOfertaGanadora` is NOT NULL";
+	$resultado = mysqli_query($conexion,$sql);
+	if(mysqli_num_rows($resultado) == 1 ){
+		$fila = mysqli_fetch_assoc($resultado);
+		return $fila["idOfertaGanadora"];
+	}else{
+		return false;
+	}
+}
+function subastaTerminada($idSubasta){
+	include("modulos/conexion.php");
+	$sql = " SELECT `fechaFin`, Now() AS now FROM `subastas` WHERE `idSubasta` =".$idSubasta;	
+	$resultado= mysqli_query($conexion, $sql);
+	$fila=mysqli_fetch_assoc($resultado);
+	return ($fila['fechaFin'] < $fila['now']);
+}
+
+function subastaEditable($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM ofertas WHERE `idSubasta` = ".$idSubasta;	
+	$resultadoOfertas= mysqli_query($conexion, $sql);
+	$sql = "SELECT * FROM preguntas WHERE `idSubasta` = ".$idSubasta;
+	$resultadoPreguntas= mysqli_query($conexion, $sql);
+	if((mysqli_num_rows($resultadoOfertas) == 0) && (mysqli_num_rows($resultadoPreguntas) == 0) && !(subastaTerminada($idSubasta)) ){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 function get_PreguntasYRespuestas_producto($idSubasta){
 	//implementar mas tarde
 	echo 'PROXIMAMENTE';

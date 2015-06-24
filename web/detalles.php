@@ -29,7 +29,9 @@
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/home.css">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/detalles.css" media="all">
 		<link rel="icon" type="image/png" href="imagenes/favicon.png">
+		<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
 		<script src="scripts/countdown.js"></script>
+		<script type="text/javascript" src="js/ofertar.js"></script>
 		<script type="text/javascript" src="js/preguntasYRespuestas.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>	
 	</head>

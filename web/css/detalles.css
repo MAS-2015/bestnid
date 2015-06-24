@@ -258,3 +258,38 @@ p.infoHead{
 	margin-right: 3%;
 	padding: 3px;
 }
+
+#precio{
+	width:8em;
+}
+
+#motivo{
+	max-width:100%;
+	width:99%;
+	resize: vertical;
+}
+
+#Foferta{
+	position:inherit;
+	width:100%;
+	border: initial;
+	box-sizing:border-box;
+	padding: 5px 15px 5px 0px;
+}
+#Foferta fieldset{
+	border: 2px groove;
+	padding: 5px 10px;
+}
+
+#Foferta fieldset legend{
+	background-color:black;
+	color:red;
+	font-weight:bold;
+	border-radius: 50px;
+	margin: 0px 1em;
+	padding:2px 10px;
+}
+
+#submit{
+	margin-left:35%;
+}
