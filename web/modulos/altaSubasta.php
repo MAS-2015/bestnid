@@ -39,10 +39,6 @@
 					if (move_uploaded_file($fototemp, $lastID.$extension)){
 						$sql ="UPDATE subastas SET imagen = '".$targetdir.$lastID.$extension."' WHERE idSubasta='".$lastID."'";
 					}else{
-						echo '<br>Temporal: '.$fototemp;
-						echo '<br>Destino'.$lastID.$extension;
-						echo '<br>';
-						print_r($_FILES);
 						$sql="DELETE FROM subastas WHERE idSubasta = ".$lastID;
 						$error=true;
 						$msg=$msg.'Error al subir la imagen';

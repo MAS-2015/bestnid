@@ -114,9 +114,12 @@ function get_info_producto($idSubasta){
 			$idUsuario=buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
 			if( (buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario) && subastaEditable($idSubasta) && !$terminada){
 				echo '
-				<button class="buttom" href="formEditarSubasta.php" >Editar subasta</button><br><br>
+				<form method="POST" action="subastar.php" >
+					<input type="hidden" name="idSubasta" value="'.$idSubasta.'"></input>
+					<input type="submit" class="buttom" name="modificar" value="Modificar subasta"></input><br><br>
+				</form>
 				<form method="POST" action="modulos/eliminarSubasta.php" onsubmit=" return confirm(\'Est&aacute; seguro?\');" >
-					<input type="hidden" class="buttom" name="idSubasta" value="'.$idSubasta.'"></input>
+					<input type="hidden" name="idSubasta" value="'.$idSubasta.'"></input>
 					<input type="submit" class="buttom" name="eliminar" value="Eliminar subasta"></input><br><br>
 				</form>
 				';
