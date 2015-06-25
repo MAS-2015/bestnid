@@ -11,7 +11,7 @@ $(document).ready(function() {
 });
 
 function validarImagen(){
-	var archivo = document.altaSubasta.imagen.value;
+	var archivo = document.getElementById("formSubasta").imagen.files[0].name;
 	extensiones_permitidas = new Array(".gif", ".jpg", ".jpeg", ".png");
 	error = "";
 	extension = (archivo.substring(archivo.lastIndexOf("."))).toLowerCase();
@@ -28,7 +28,14 @@ function validarImagen(){
 		$('#Info').html('<img src="imagenes/loader.gif" alt=""/>').fadeOut(100);
 		$('#Info').fadeIn(100).html("<div id='Error'>"+error+"</div>");
 	}else{
-		$('#Info').fadeIn(100).html("");
+		if ((document.getElementById("formSubasta").imagen.files[0].size/1024/1024)>2){  /*MB*/
+			error = "La imagen no debe ser mayor a 2MB";
+			$('#Info').html('<img src="imagenes/loader.gif" alt=""/>').fadeOut(100);
+			$('#Info').fadeIn(100).html("<div id='Error'>"+error+"</div>");
+		}
+		else{
+			$('#Info').fadeIn(100).html("");
+		}
 	}
 }
 

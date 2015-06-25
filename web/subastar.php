@@ -23,7 +23,12 @@
 					include('header.php');
 				?>
                 <?php
-                    include('formAltaSubasta.php');
+					if(isset($_POST["modificar"])){
+						include('formModSubasta.php');
+					}
+					else{
+						include('formAltaSubasta.php');
+					}
                 ?>			
 			</div>	
 			<div class="footer">

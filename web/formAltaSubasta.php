@@ -9,7 +9,7 @@
 		echo'
 		<p class="infoR">COMPLETE LOS DATOS INDICADOS PARA SUBASTAR UN PRODUCTO</p>
 		
-		<form required="required" onsubmit="return valido(this)" target="_self" name="altaSubasta" class="reg" method="post" action="modulos/altaSubasta.php" enctype="multipart/form-data">
+		<form required="required" id="formSubasta" onsubmit="return valido(this)" target="_self" name="altaSubasta" class="reg" method="post" action="modulos/altaSubasta.php" enctype="multipart/form-data">
 			<input required="required" id="titulo" type="text" name="titulo" placeholder="T&iacute;tulo subasta"><img src="imagenes/ayuda.png"  Title="* Ingrese el t&iacute;tulo que desea para su subasta" ><span class="oblig">*</span> <div id="Info3"></div><br><br>
 			<select required="required" name="categoria">
 				<option selected disabled>Seleccione una categor&iacute;a </option>

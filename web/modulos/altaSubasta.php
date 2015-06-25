@@ -1,17 +1,17 @@
 <?php
 	session_start();
 	include("conexion.php");
-	$titulo= addslashes($_POST["titulo"]);
+	$titulo= utf8_decode(addslashes($_POST["titulo"]));
 	$categoria= addslashes($_POST["categoria"]);
 	$tiempo= addslashes($_POST["tiempo"]);
-	$descripcion= addslashes($_POST["descripcion"]);
+	$descripcion= utf8_decode(addslashes($_POST["descripcion"]));
 	$fototemp= $_FILES["imagen"]["tmp_name"];
 	$foto= $_FILES["imagen"]["name"];
 	chdir('../imagenes/subastas/');
 	$targetdir='imagenes/subastas/';
 	$dia= 86400;
 	$fechaInicio= date ("Y-m-d", time());
-	$fechaFin= date ("Y-m-d", time() + (($tiempo-1) * $dia));
+	$fechaFin= date ("Y-m-d", time() + ($tiempo * $dia));
 	$error=false;
 	$msg='';
 	
@@ -39,10 +39,6 @@
 					if (move_uploaded_file($fototemp, $lastID.$extension)){
 						$sql ="UPDATE subastas SET imagen = '".$targetdir.$lastID.$extension."' WHERE idSubasta='".$lastID."'";
 					}else{
-						echo '<br>Temporal: '.$fototemp;
-						echo '<br>Destino'.$lastID.$extension;
-						echo '<br>';
-						print_r($_FILES);
 						$sql="DELETE FROM subastas WHERE idSubasta = ".$lastID;
 						$error=true;
 						$msg=$msg.'Error al subir la imagen';
