@@ -6,9 +6,9 @@
 	if( is_numeric($_POST["idSubasta"]) ){
 		$idSubasta = $_POST["idSubasta"];
 		$idUsuario = buscarIdUsuarioPorEmail($_SESSION["Usuario"]);
-		$titulo= addslashes($_POST["titulo"]);
+		$titulo= utf8_decode(addslashes($_POST["titulo"]));
 		$categoria= addslashes($_POST["categoria"]);
-		$descripcion= addslashes($_POST["descripcion"]);
+		$descripcion= utf8_decode(addslashes($_POST["descripcion"]));
 		
 		echo getcwd();
 		if(subastaEditable($idSubasta) && dueñoSubasta($idUsuario,$idSubasta)){		

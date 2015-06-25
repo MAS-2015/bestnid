@@ -1,10 +1,10 @@
 <?php
 	session_start();
 	include("conexion.php");
-	$titulo= addslashes($_POST["titulo"]);
+	$titulo= utf8_decode(addslashes($_POST["titulo"]));
 	$categoria= addslashes($_POST["categoria"]);
 	$tiempo= addslashes($_POST["tiempo"]);
-	$descripcion= addslashes($_POST["descripcion"]);
+	$descripcion= utf8_decode(addslashes($_POST["descripcion"]));
 	$fototemp= $_FILES["imagen"]["tmp_name"];
 	$foto= $_FILES["imagen"]["name"];
 	chdir('../imagenes/subastas/');

@@ -31,7 +31,7 @@
 			<p class="infoR">CAMBIE LOS DATOS QUE QUIERA DE LA SUBASTA</p>
 			
 			<form required="required" id="formSubasta" onsubmit="return valido(this)" name="modSubasta" class="reg" method="POST" action="modulos/modSubasta.php" enctype="multipart/form-data">
-				<input required="required" id="titulo" type="text" name="titulo" placeholder="T&iacute;tulo subasta" value="'.$subasta["titulo"].'" ><img src="imagenes/ayuda.png"  Title="* Ingrese el t&iacute;tulo que desea para su subasta" ><span class="oblig">*</span> <div id="Info3"></div><br><br>
+				<input required="required" id="titulo" type="text" name="titulo" placeholder="T&iacute;tulo subasta" value="'.utf8_encode($subasta["titulo"]).'" ><img src="imagenes/ayuda.png"  Title="* Ingrese el t&iacute;tulo que desea para su subasta" ><span class="oblig">*</span> <div id="Info3"></div><br><br>
 				<input type="hidden" name="idSubasta" value="'.$idSubasta.'"></input>
 				<select required="required" name="categoria">
 					<option disabled>Seleccione una categor&iacute;a </option>
@@ -52,7 +52,7 @@
 				</select><img src="imagenes/ayuda.png"  Title="* Seleccione una categor&iacute;a para la subasta" ><span class="oblig">*</span> <div id="Info5"></div><br><br>
 				<p>Imagen anterior:</p><div style="background-image: url('.$subasta["imagen"].');  background-size: contain ;min-width:150px;min-height:150px; max-width:100%; max-height:100%;"></div><br><p>(No seleccione otra im&aacute;gen si no desea cambiar la actual)</p>
 				<input type="file" id="imagen" name="imagen" accept="image/*"><img src="imagenes/ayuda.png"  Title="* Ingrese una imagen"><span class="oblig">*</span><div id="Info"></div><br><br>
-				<textarea autocomplete="off" required="required" id="descripcion" name="descripcion" rows="4" placeholder="Descripci&oacute;n de la subasta">'.$subasta["descripcion"].'</textarea><img src="imagenes/ayuda.png"  Title="* Escriba una breve descripci&oacute;n del producto a subastar" ><span class="oblig">*</span><div id="Info4"></div><br><br>
+				<textarea autocomplete="off" required="required" id="descripcion" name="descripcion" rows="4" placeholder="Descripci&oacute;n de la subasta">'.utf8_encode($subasta["descripcion"]).'</textarea><img src="imagenes/ayuda.png"  Title="* Escriba una breve descripci&oacute;n del producto a subastar" ><span class="oblig">*</span><div id="Info4"></div><br><br>
 			<input type="reset" id="anterior" value="Resetear a lo anterior" class="buttom" onclick="atras();">
 			<input type="submit" id="enviar" name="modificar" value="modificar" class="buttom">
 			</form>

@@ -45,5 +45,25 @@ function getFormGanador(){
 		document.getElementById("oferta").innerHTML = data;
 	});
 	document.getElementById("oferta").focus();
+}
 
+function elegirGanador( idOferta ){
+	var id = getVarsUrl().id;
+	$.post("modulos/ganador.php",
+	{
+		idSubasta: id,
+		ganador : idOferta,
+	});
+	document.getElementById("oferta").innerHTML = '<p>Se ha enviado un mail al ganador para notificarlo</p><br><button class="buttom" onclick="datosContacto(\''+id+'\');" >ver datos del ganador</button>';
+}
+
+function datosContacto(idSubasta){
+	$.post("modulos/datosContacto.php",
+	{
+		idSubasta: idSubasta,
+	},
+	function(data, status){
+	if(status){ document.getElementById("oferta").innerHTML = 'estatus true :';}
+		document.getElementById("oferta").innerHTML = data;
+	});
 }

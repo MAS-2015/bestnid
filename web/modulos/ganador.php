@@ -12,7 +12,6 @@
 			$resultado= mysqli_query($conexion, $sql);
 		}
 		mysqli_close($conexion);
-		header('Location: ../detalles.php?id='.$idSubasta.'');
 	}
 	else{ echo 'precio no numerico';}
 ?>

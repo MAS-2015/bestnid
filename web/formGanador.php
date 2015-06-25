@@ -22,7 +22,7 @@ if($idSubasta == -1){
 else{
 	echo '<p>Ofertas:</p>
 	<link type="text/css" id="global-css" rel="stylesheet" href="css/ganador.css">
-	<form action="modulos/ganador.php" class="oferta" method="POST" >
+	<form id="FGan" action="modulos/ganador.php" target="_self" class="oferta" method="POST" >
 	<input type="hidden" name="idSubasta" value="'.$idSubasta.'"></input>
 	';
 	$sql="SELECT * FROM ofertas WHERE idSubasta='".$idSubasta."'";
@@ -31,11 +31,10 @@ else{
 		while($oferta = mysqli_fetch_assoc($resultadoOfertas)){
 			echo '
 			<fieldset>
-				<input type="hidden" name="ganador" value="'.$oferta["idOferta"].'"></input>
 				<p>'.utf8_encode($oferta["motivo"]).'</p>
 				';
 				if( subastaTerminada($idSubasta)){
-					echo '<input type="submit" class="buttom" value="Elegir como oferta ganadora"></input>
+					echo '<input type="button" onclick="elegirGanador(\''.$oferta["idOferta"].'\');" class="buttom" value="Elegir como oferta ganadora"></input>
 					';
 				}
 			echo'

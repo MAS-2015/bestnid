@@ -68,7 +68,7 @@ function semi_detalle($idSubasta){
 		<div class="semi-detalle-container">
 			<a href="detalles.php?id='.$fila['idSubasta'].'">
 				<div class="semi-detalle-imagen"><img src="'. $fila['imagen'].'"></div>
-				<div class="semi-detalle-titulo"><span>'.utf8_decode($fila['titulo']).'</span></div>
+				<div class="semi-detalle-titulo"><span>'.$fila['titulo'].'</span></div>
 				<div class="semi-detalle-countdown">'.($terminada?countdown(strtotime($fila['fechaFin'])):'<p>SUBASTA TERMINADA</p>').'</div>
 			</a>
 		</div>
@@ -100,7 +100,7 @@ function get_info_producto($idSubasta){
 	$categoria= mysqli_fetch_assoc($resultado);
 	$terminada=($fila['fechaFin'])<$fila['now'];
 	echo'
-		<h1 class="titulo">'.utf8_decode($fila["titulo"]).'</h1>
+		<h1 class="titulo">'.$fila["titulo"].'</h1>
 		<img src="'. utf8_decode($fila['imagen']).'">
 		<div class="info-lateral">
 			<span>Fecha publicaci&oacute;n: </span> '.$fila["fechaInicio"].'<br>
@@ -130,7 +130,7 @@ function get_info_producto($idSubasta){
 		<div class="info-descripcion">
 			<span>Descripci&oacute;n:</span><br>
 			<p>
-				'.utf8_decode($fila["descripcion"]).'
+				'.$fila["descripcion"].'
 			</p>
 		</div><br>
 		';
@@ -147,6 +147,9 @@ function get_info_producto($idSubasta){
 						echo '<button class="buttom" onclick="getFormGanador();" >'.($terminada?"Elegir ganador":"Ver ofertas").'</button><br>';
 					}
 				}
+				else{
+					echo '<button class="buttom" onclick="datosContacto(\''.$idSubasta.'\');" >ver datos del ganador</button>';
+				}
 			}
 			elseif(!$terminada){
 				$oferta=usuarioOfertoEn($idUsuario,$idSubasta);
@@ -161,8 +164,24 @@ function get_info_producto($idSubasta){
 		echo '</div>';
 }
 
-function dueñoSubasta($idUsuario,$idSubasta){
+function dueñoSubasta($idUsuario, $idSubasta){
 	return (buscarIdUsuarioPorIdSubasta($idSubasta) == $idUsuario);
+}
+
+function ganadorSubasta($idUsuario,$idSubasta){
+	include("modulos/conexion.php");
+	return $idUsuario == idGanadorSubasta($idSubasta);
+}
+
+function idGanadorSubasta($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT `ofertas`.`idUsuario` AS idGanador FROM `subastas` INNER JOIN `ofertas`ON `subastas`.`idOfertaGanadora` = `ofertas`.`idOferta` WHERE `subastas`.`idSubasta`='".$idSubasta."'";
+	$resultado = mysqli_query($conexion,$sql);
+	if($resultado && mysqli_num_rows($resultado) == 1){
+		$fila = mysqli_fetch_assoc($resultado);
+		return $fila["idGanador"];
+	}
+	else{ return false; }
 }
 
 function usuarioOfertoEn($idUsuario,$idSubasta){
@@ -216,24 +235,20 @@ function subastaEditable($idSubasta){
 	}
 }
 
-function get_PreguntasYRespuestas_producto($idSubasta){
-	//implementar mas tarde
-	echo 'PROXIMAMENTE';
-}
 function buscarIdUsuarioPorEmail($user){
 	include("modulos/conexion.php");
 	$sql = "SELECT `idUsuario` FROM `usuarios` WHERE `email` ='".$user."'";
 	$resultado = mysqli_query($conexion,$sql);
-	$fila = mysqli_fetch_row($resultado);
-	return $fila[0];
+	$fila = mysqli_fetch_assoc($resultado);
+	return $fila["idUsuario"];
 
 }
 function buscarIdUsuarioPorIdSubasta($idSubasta){
 	include("modulos/conexion.php");
-	$sql = "SELECT `idUsuario` FROM `subastas` WHERE `IdSubasta` =".$idSubasta;
+	$sql = "SELECT `idUsuario` FROM `subastas` WHERE `IdSubasta` ='".$idSubasta."'";
 	$resultado = mysqli_query($conexion,$sql);
-	$fila = mysqli_fetch_row($resultado);
-	return $fila[0];
+	$fila = mysqli_fetch_assoc($resultado);
+	return $fila["idUsuario"];
 
 }
 
