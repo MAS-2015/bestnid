@@ -1,0 +1,112 @@
+div.perfil{
+	width: 100%;
+}
+
+div.menup{
+	display: inline-block;
+	clear: right;
+	float:left;
+}
+nav {
+	margin-left: 50px;
+	width: 250px;
+}
+
+nav ul {
+	list-style: none;
+	width: 250px;
+}
+
+nav ul li {
+	height: 30px;
+	background:#232125;
+	text-align: center;
+	border-radius: 2px;		
+	border-bottom: 2px #b82828 solid;	
+}
+	
+nav ul li a{
+	color:white;
+	font-size: 18px;
+	font-family: sans-serif;
+	padding: 5px;
+	width: 250px;
+}
+
+nav ul li a:hover {
+	color: #b82828;
+}
+
+#mp{
+	margin-left: 35px;
+	display: block;
+}
+
+
+
+div.muestra {
+	padding-left: 50px;
+	width: 650px;
+	float:left;
+	display: block;
+	font-size: 20px;
+	color:#353535;
+	height: 100%;
+}
+
+div.muestra a{
+	color:#232125;
+}
+
+div.cajita{
+	box-sizing: border-box;
+	border: 1px solid #a8a8a8;
+	width: 650px;
+	height: 150px;
+}
+
+div.cajita img{
+	height: 100px;
+	width: 100px;
+	margin-left: 10px;
+	clear: right;
+	float:left;
+	margin-right: 15px;
+}
+
+
+
+div.cajita div.fecha{
+	margin-left: 10px;
+	color:#7f7f7f;
+	font-size: 15px;
+	display:inline;
+
+}
+
+div.cajita div.semi-detalle-countdown{
+	margin-left: 50px;
+	float:right;
+	margin-right: 15px;
+}
+
+div.cajita div.opc{
+	font-size: 16px;
+	float:right;
+	margin-bottom: 50px;
+}
+
+div.cajita div.opc a {
+	color:#023196;
+}
+
+
+div.cajita div.opc2{
+	font-size: 16px;
+	margin-bottom: 50px;
+}
+
+div.cajita div.opc2 a {
+	color:#023196;
+}
+

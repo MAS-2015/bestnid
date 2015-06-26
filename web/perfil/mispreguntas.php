@@ -1,7 +1,8 @@
 <?php
 	include("modulos/conexion.php");
 	$usr=$_SESSION['Usuario'];
-	$sql="SELECT p.pregunta, s.titulo, s.idSubasta, s.imagen, p.fecha FROM preguntas as p INNER JOIN usuarios as u ON (u.idUsuario=p.idUsuario) INNER JOIN subastas as s ON (s.idSubasta=p.idSubasta) WHERE u.email='".$usr."'";
+	$sql="SELECT p.pregunta, s.titulo, s.idSubasta, s.imagen, p.fecha FROM preguntas as p INNER JOIN usuarios as u ON (u.idUsuario=p.idUsuario) INNER JOIN subastas as s ON (s.idSubasta=p.idSubasta) WHERE u.email='".$usr."'AND DATE(s.fechaFin)>CURDATE()";
+	echo "SUS PREGUNTAS EN SUBASTAS ACTIVAS: <BR>";
 	$resultado = mysqli_query($conexion, $sql);
 	if(mysqli_num_rows($resultado) > 0){
 		while($preguntas= mysqli_fetch_row($resultado)){
@@ -15,7 +16,7 @@
 			echo"</div>";
 		}
 	} else {
-		echo"Todavia no realizo ninguna pregunta";
+		echo"No tiene preguntas en subastas activas.";
 	}
 	mysqli_close($conexion);
 

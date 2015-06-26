@@ -1,0 +1,110 @@
+div.registro{
+	margin: 0 auto;
+	padding-left: 10px;
+	padding-right: 30px;
+	height: auto;
+	background: rgba( 158, 158, 158, 0.281 );
+	width: 350px;
+	padding-bottom: 15px;
+	border-radius: 25px;
+	border:2px solid black;
+	padding-left: 10px;
+	padding-right: 30px;
+	color:white;
+}
+
+div.registro form{
+	margin:0 auto;
+	width: 900px;
+	font-family: "Delius-Regular";
+
+}
+
+
+form.reg input[type=text]{
+	padding-right: 2px;
+	border-radius: 5px;
+	padding-left: 2px;
+	width: 350px;
+	height: 40px;
+	margin-bottom: 5px;
+}
+
+form.reg input[type=number]{
+	border-radius: 5px;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 350px;
+	height: 40px;
+	margin-bottom: 5px;	
+}
+
+form.reg input[type=password]{
+	border-radius: 5px;
+	padding-right: 2px;
+	padding-left: 2px;
+	width: 350px;
+	height: 40px;
+	margin-bottom: 5px;	
+}
+
+div.contrasena{
+
+	margin: 0 auto ;
+	height: auto;
+	padding-left: 10px;
+	padding-right: 30px;
+	background: rgba( 158, 158, 158, 0.281 );
+	width: 350px;
+	padding-bottom: 15px;
+	border-radius: 25px;
+	border:2px solid black;
+	color:white;
+}
+
+div.contrasena form{
+	margin:0 auto;
+
+	width: 900px;
+	font-family: "Delius-Regular";
+
+}
+
+p.infoR{
+	text-align: left;
+	margin-left:-12px;
+	padding-left: 12px;
+	font-family: "Delius-Regular";
+	background: #b71f1f;
+	width: 382px;
+	border-top-right-radius: 25px;
+	border-top-left-radius: 25px;
+}
+
+span.oblig{
+	color: #680c07;
+	height: 20px;
+}
+
+div.baja{
+
+	margin: 0 auto ;
+	
+	height: auto;
+	padding-left: 10px;
+	padding-right: 30px;
+	background: rgba( 158, 158, 158, 0.281 );
+	width: 350px;
+	padding-bottom: 15px;
+	border-radius: 25px;
+	border:2px solid black;
+	color:white;
+}
+
+div.baja form{
+	margin:0 auto;
+
+	width: 900px;
+	font-family: "Delius-Regular";
+
+}

@@ -1,6 +1,5 @@
 <?php
 	$id=$_POST['id'];
-	echo"$id";
 	$nom=$_POST['nomyApe'];
 	$tarj=$_POST['nroTarj'];
 	$tel=$_POST['nroTel'];

@@ -17,11 +17,32 @@ function countdown($time){
 
 	include("modulos/conexion.php");
 	$usr=$_SESSION['Usuario'];
-	$sql="SELECT s.titulo, s.idSubasta, s.imagen, s.fechaInicio, s.fechaFin, Now() FROM subastas as s INNER JOIN usuarios as u ON (u.idUsuario=s.idUsuario) WHERE u.email='".$usr."'";
-
+	$sql="SELECT s.titulo, s.idSubasta, s.imagen, s.fechaInicio, s.fechaFin, Now() FROM subastas as s INNER JOIN usuarios as u ON (u.idUsuario=s.idUsuario) WHERE u.email='".$usr."' AND DATE(s.fechaFin)<CURDATE() AND s.idOfertaGanadora is NULL";
 	$resultado = mysqli_query($conexion, $sql);
+	echo "SUS SUBASTAS TERMINADAS ELIJA UN GANADOR: <BR>";
 	if(mysqli_num_rows($resultado) > 0){
 		while($subastas= mysqli_fetch_row($resultado)){
+			echo "<div class='cajita'>";
+			echo"<a href='detalles.php?id=$subastas[1]'> $subastas[0] </a>";
+			echo"<br>";
+			echo"<img src='$subastas[2]'>";
+
+			echo"<div class='opc2'><a href='detalles.php?id=$subastas[1]'>VER</a></div>";			
+			echo"<div class='fecha'>Fecha: $subastas[3]</div>";
+			echo "</div>";
+		}
+		echo "<br><br>";
+	} else {
+		echo"No tiene subastas que requieran elegir un ganador<br><br><br>";
+	}
+
+
+	$sql2="SELECT s.titulo, s.idSubasta, s.imagen, s.fechaInicio, s.fechaFin, Now() FROM subastas as s INNER JOIN usuarios as u ON (u.idUsuario=s.idUsuario) WHERE u.email='".$usr."' AND DATE(s.fechaFin)>CURDATE()";
+
+	$resultado2 = mysqli_query($conexion, $sql2);
+	echo "SUS SUBASTAS ACTIVAS: <BR>";
+	if(mysqli_num_rows($resultado2) > 0){
+		while($subastas= mysqli_fetch_row($resultado2)){
 			$terminada=($subastas[4])>$subastas[5];
 			echo "<div class='cajita'>";
 			echo"<a href='detalles.php?id=$subastas[1]'> $subastas[0] </a>";
@@ -33,9 +54,30 @@ function countdown($time){
 			echo"<div class='fecha'>Fecha: $subastas[3]</div>";
 			echo "</div>";
 		}
+		echo "<br><br>";		
 	} else {
-		echo"Todavia no subasto ningun producto";
+		echo"No tiene subastas activas<br><br><br>";
 	}
+
+	$sql3="SELECT s.titulo, s.idSubasta, s.imagen, s.fechaInicio, s.fechaFin, Now() FROM subastas as s INNER JOIN usuarios as u ON (u.idUsuario=s.idUsuario) WHERE u.email='".$usr."' AND DATE(s.fechaFin)<CURDATE() AND s.idOfertaGanadora is not NULL";
+
+	$resultado3 = mysqli_query($conexion, $sql3);
+	echo "SUS SUBASTAS COMPLETADAS: <BR>";
+	if(mysqli_num_rows($resultado3) > 0){
+		while($subastas= mysqli_fetch_row($resultado3)){
+			echo "<div class='cajita'>";
+			echo"<a href='detalles.php?id=$subastas[1]'> $subastas[0] </a>";
+			echo"<br>";
+			echo"<img src='$subastas[2]'>";
+		
+			echo"<div class='fecha'>Fecha: $subastas[3]</div>";
+			echo "</div>";
+		}
+		echo "<br><br><br>";		
+	} else {
+		echo"No tiene subastas completadas<br><br><br>";
+	}
+
 	mysqli_close($conexion);
 
 ?>
