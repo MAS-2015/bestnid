@@ -13,6 +13,9 @@
 
 
 	<body>
+		<?php
+		 $fecha =strftime( "%Y-%m-%d", time());
+		?>
 
 		<div class="wrapper">
 			<div class="consultasFechas">
@@ -29,7 +32,7 @@
 			<p id="msjFormato"></p>
 			<script> $('#fechas').dateRangePicker({
 				showShortcuts: false,
-				format: 'YYYY-MM-DD',endDate: '2015-06-24',
+				format: 'YYYY-MM-DD',endDate: '<?php echo $fecha; ?>',
 				
 					separator : ' to ',
 					getValue: function()
@@ -51,7 +54,8 @@
 	
 				);</script>
 		<?php 
-		
+			
+			
 			if (isset($_POST['inicio'])){
 			switch($_POST['consulta']){
 			case 'usuarios':{	
