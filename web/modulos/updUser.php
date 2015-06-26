@@ -11,5 +11,6 @@
 	$resultado = mysqli_query($conexion, $sql);
 	mysqli_close($conexion);
 	$msj='Datos modificados correctamente';
+	header('Location: ../perfil.php?msj='.$msj.'');	
 	
 ?>
