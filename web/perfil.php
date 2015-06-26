@@ -20,7 +20,12 @@
 		<link rel="icon" type="image/png" href="imagenes/favicon.png">
 		<script src="scripts/countdown.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>
-		
+		<script type="text/javascript">
+		function pulsar(e) {
+		  tecla = (document.all) ? e.keyCode : e.which;
+		  return (tecla != 13);
+		}
+		</script>
 		<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
 		<script type="text/javascript">
 		$(document).ready(function() {

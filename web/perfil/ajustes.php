@@ -7,7 +7,7 @@
 	echo'
 <div class="registro">
 	<p class="infoR">MODIFIQUE LOS CAMPOS DESEADOS</p>
-	<form required="required" onsubmit="return valido(this)" name="reg" class="reg" method="post" action="modulos/updUser.php">
+	<form required="required" onkeypress = "return pulsar(event)" onsubmit="return valido(this)" name="reg" class="reg" method="post" action="modulos/updUser.php">
 	<input  style="display:none" value="'.$datos[4].'" id="id" type="text" name="id" placeholder=""><br>
 	<span class="oblig">Nombre y Apellido:<br></span>
 	<input required="required" value="'.$datos[0].'" id="nombre" type="text" name="nomyApe" placeholder="Nombre y Apellido"><img src="imagenes/ayuda.png"  Title="* Minimo 7 caracteres" ><span class="oblig">*</span> <div id="Info3"></div><br>
@@ -23,7 +23,7 @@
 	echo '
 	<div class="contrasena">
 	<p class="infoR">MODIFIQUE SU CONTRASE&Ntilde;A</p>
-	<form required="required" onsubmit="return valido2(this)" name="reg" class="reg" method="post" action="modulos/updPass.php">
+	<form required="required" onkeypress = "return pulsar(event)" onsubmit="return valido2(this)" name="reg" class="reg" method="post" action="modulos/updPass.php">
 	<input  style="display:none" value="'.$datos[4].'" id="id" type="text" name="id" placeholder=""><br>
 	<input autocomplete="off" required="required" id="pass" type="password" maxlength="12" name="pass" placeholder="Contrase&ntilde;a Nueva"><img src="imagenes/ayuda.png"  Title="* La contraseña debe tener un minimo de 6 caracteres" ><span class="oblig">*</span><div id="Info4"></div><br>
 		<input required="required" type="password" id="passconf" maxlength="12" name="passconfirmacion" placeholder="Vuelve a ingresar su nueva contrase&ntilde;a"><img src="imagenes/ayuda.png"  Title="* Introduzca la misma contraseña del campo anterior" ><span class="oblig">*</span><div id="Info5"></div><br>
