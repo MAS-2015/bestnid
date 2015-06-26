@@ -16,7 +16,7 @@
 		';
 	}
 	?>
-	<br><span>Precio: $ </span><input type="number"  min="1" maxlength="11" placeholder="Precio a pagar" name="precio" required="required" onchange="checkPrecio(this)" id="Precio" <?php if(isset($_POST["idOferta"])){echo 'value="'.$precio.'"';} ?> ></input><span class="oblig">*</span><div id="InfoP"></div><br>
+	<br><span>Precio: $ </span><input type="number"  min="1" maxlength="11" placeholder="Precio a pagar" name="precio" required="required" onKeyPress="return soloNumeros(event)" id="Precio" <?php if(isset($_POST["idOferta"])){echo 'value="'.$precio.'"';} ?> ></input><span class="oblig">*</span><div id="InfoP"></div><br>
 	<p>¿Por que lo necesita?</p>
 	<textarea autocomplete="off" required="required" id="motivo" name="motivo" rows="4" placeholder="Descripci&oacute;n del por que usted necesita el bien subastado" ><?php if(isset($_POST["idOferta"])){echo utf8_encode($motivo);} ?></textarea><span class="oblig">*</span><div id="InfoM"></div><br><br>
 	<input class="buttom" id="submit" type="submit" <?php if(isset($_POST["idOferta"])){echo 'value="Actualizar oferta"';}else{echo 'value="Ofertar"';}?>></input>
