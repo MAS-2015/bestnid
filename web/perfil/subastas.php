@@ -1,4 +1,26 @@
 <?php
+function subastaTerminada($idSubasta){
+	include("modulos/conexion.php");
+	$sql = " SELECT `fechaFin`, Now() AS now FROM `subastas` WHERE `idSubasta` =".$idSubasta;	
+	$resultado= mysqli_query($conexion, $sql);
+	$fila=mysqli_fetch_assoc($resultado);
+	return ($fila['fechaFin'] < $fila['now']);
+}
+
+function subastaEditable($idSubasta){
+	include("modulos/conexion.php");
+	$sql = "SELECT * FROM ofertas WHERE `idSubasta` = ".$idSubasta;	
+	$resultadoOfertas= mysqli_query($conexion, $sql);
+	$sql = "SELECT * FROM preguntas WHERE `idSubasta` = ".$idSubasta;
+	$resultadoPreguntas= mysqli_query($conexion, $sql);
+	if((mysqli_num_rows($resultadoOfertas) == 0) && (mysqli_num_rows($resultadoPreguntas) == 0) && !(subastaTerminada($idSubasta)) ){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 function countdown($time){
 	$contador='
 		<script>
@@ -49,8 +71,19 @@ function countdown($time){
 			echo"<br>";
 			echo"<img src='$subastas[2]'>";
 			echo'<div class="semi-detalle-countdown">Tiempo para su finalizacion <br> '.($terminada?countdown(strtotime($subastas[4])):'<p>SUBASTA TERMINADA</p>').'</div>';
-			echo"<div class='opc'><a href='detalles.php?id=$subastas[1]'>VER</a> | 
-			<a href=''>EDITAR</a> | <a href=''>ELIMINAR</a></div>";			
+			echo"<div class='opc'><form method='get' action='detalles.php'> 
+			<input type='hidden' name='id' value='$subastas[1]'></input><input class='buttom' type='submit' value='Ver'></input></form>";
+			if (subastaEditable($subastas[1]))
+				echo"
+					<form method='POST' action='subastar.php'>
+					<input type='hidden' name='idSubasta' value='$subastas[1]'></input>
+					<input type='submit' name='modificar' class='buttom'  value='Modificar'></input> </form>"; 
+			if (subastaEditable($subastas[1]))
+				echo"
+					<form method='POST' action='modulos/eliminarSubasta.php' onsubmit=' return confirm(\"Est&aacute; seguro?\");'>
+					<input type='hidden' name='idSubasta' value='$subastas[1]'></input>
+					<input type='submit' name='eliminar' class='buttom'  value='Eliminar'></input><br><br> </form>";
+			echo"</div>";			
 			echo"<div class='fecha'>Fecha: $subastas[3]</div>";
 			echo "</div>";
 		}

@@ -30,10 +30,10 @@
 			<input type="submit" id="enviar" value="Actualizar contrase&ntilde;a" class="buttom"></form>
 		</div>
 		<div class="baja">
-		<p class="infoR">DESACTIVE SU CUENTA</p>
-		<form required="required" name="reg" class="reg" method="post" action="modulos/bajaUser.php">
+		<p class="infoR">BORRAR SU CUENTA</p>
+		<form required="required" name="reg" class="reg" method="post" action="modulos/bajaUser.php" onsubmit=" return confirm(\'Est&aacute; seguro? la cuenta se borrara de forma permanente\');" >
 		<input  style="display:none" value="'.$datos[4].'" id="id" type="text" name="id" placeholder=""><br>
-		<input type="submit" id="enviar" value="Desactivar su cuenta"  class="buttom"></form>
+		<input type="submit" id="enviar" value="Borrar su cuenta"  class="buttom"></form>
 		</div>
 		';
 	mysqli_close($conexion);
