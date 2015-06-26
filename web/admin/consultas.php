@@ -16,15 +16,15 @@
 
 		<div class="wrapper">
 			<div class="consultasFechas">
-			<form method="post" action="usuariosRegistrados.php" onsubmit="return validarFechas('fechaInicio','fechaFin')">
-			<p class="subti">Seleccione tipo de consulta y fechas para la consulta </p><select name="consulta">
+			<form method="post" action="consultas.php" onsubmit="return validarSelectorYFechas('selectorConsulta', 'fechaInicio','fechaFin')">
+			<p class="subti">Seleccione tipo de consulta y fechas para la consulta </p><select name="consulta" id="selectorConsulta">
 				<option value="">-seleccionar tipo-</option>
 				<option value="usuarios">Usuarios registrados</option>
 				<option value="finalizadas">Subastas finalizadas</option>
 				<option value="iniciadas">Subastas iniciadas</option>
 			</select>
 			<span>desde:</span><span id="fechas"><input id="fechaInicio" name='inicio' size="16" value=""> hasta: <input id="fechaFin" name='fin' size="16" value=""></span>
-			<input type="submit" value="consultar" class= "buttom" >
+			<input type="submit" value="consultar" class= "buttom" > <buttom type="buttom" class="buttom" onclick= "limpiar()" >limpiar</buttom>
 			</form>
 			<p id="msjFormato"></p>
 			<script> $('#fechas').dateRangePicker({

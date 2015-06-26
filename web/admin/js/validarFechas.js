@@ -42,3 +42,19 @@ function existeFecha (fecha) {
         var y = fechaf[0];
         return m > 0 && m < 13 && y > 0 && y < 32768 && d > 0 && d <= (new Date(y, m, 0)).getDate();
        }
+
+function validarSelectorYFechas(selector,fecha1, fecha2){
+	if(validarSelector(selector)){
+		if(validarFechas(fecha1,fecha2)){
+			return true;
+		}
+	}	
+	return false;
+	
+}
+function limpiar(){
+	document.getElementById('fechaInicio').value = "";
+	document.getElementById('fechaFin').value="";
+	document.getElementById('selectorConsulta').selectedIndex = 0;
+
+}
