@@ -28,6 +28,7 @@
 			</form>
 			<p id="msjFormato"></p>
 			<script> $('#fechas').dateRangePicker({
+				showShortcuts: false,
 				format: 'YYYY-MM-DD',endDate: '2015-06-24',
 				
 					separator : ' to ',
