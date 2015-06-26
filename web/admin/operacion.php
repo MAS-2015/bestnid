@@ -58,6 +58,9 @@
 						case 'modCat':
 							include 'modcategorias.php';
 							break;
+						case 'consultas':
+							include 'consultas.php';
+							break;							
 						}
 					?>
 					
