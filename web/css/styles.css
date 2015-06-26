@@ -54,6 +54,19 @@
 	display: inline;
 	font-weight: bold;
 	}
+
+#Error2{
+	background-image:url(../imagenes/no.png);
+	background-repeat:no-repeat;
+	background-position:left; 
+	color:#8b1717; 
+	padding-left:33px; 
+	height:20px; 
+	padding-right:10px;
+	display: inline;
+	font-weight: bold;
+	}
+
 #Success{
 	background-image:url(../imagenes/si.png);
 	background-repeat:no-repeat;

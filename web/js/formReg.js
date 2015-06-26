@@ -6,3 +6,12 @@ function valido(reg) {
 	
 
   }
+
+function valido2(reg) {   
+		if (document.getElementById("Error2")){
+			alert('Por favor corrija los campos indicados');
+			return false;
+		}
+	
+
+  }
