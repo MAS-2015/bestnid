@@ -32,6 +32,7 @@
 		<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
 		<script src="scripts/countdown.js"></script>
 		<script type="text/javascript" src="js/ofertar.js"></script>
+		<script type="text/javascript" src="js/numeros.js"></script>
 		<script type="text/javascript" src="js/preguntasYRespuestas.js"></script>
 		<script type="text/javascript" src="js/login.js"></script>	
 	</head>
