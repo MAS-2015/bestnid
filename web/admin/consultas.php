@@ -16,7 +16,7 @@
 
 		<div class="wrapper">
 			<div class="consultasFechas">
-			<form method="post" action="consultas.php" onsubmit="return validarSelectorYFechas('selectorConsulta', 'fechaInicio','fechaFin')">
+			<form method="post" action="operacion.php?op=consultas" onsubmit="return validarSelectorYFechas('selectorConsulta', 'fechaInicio','fechaFin')">
 			<p class="subti">Seleccione tipo de consulta y fechas para la consulta </p><select name="consulta" id="selectorConsulta">
 				<option value="">-seleccionar tipo-</option>
 				<option value="usuarios">Usuarios registrados</option>
