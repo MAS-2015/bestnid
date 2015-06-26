@@ -230,3 +230,59 @@
 .hide {
 	display: none;
 }
+
+div.consultasFechas{
+	padding-top: 15px;
+	margin: 0 auto ;
+	height: auto;
+	padding: 25px;
+	background: rgba( 73, 73, 73, 0.616 );
+	width: 700px;
+	padding-bottom: 15px;
+	border-radius: 25px;
+	border:2px solid black;
+	color:white;
+}
+
+div.lista{
+	background-color: #555555;
+	box-sizing: border-box;
+	border: 1px solid #a8a8a8;
+	width: 650px;
+	height: auto;
+	padding-top: 10px;
+	padding-left:10px;
+	margin-top: 10px;
+}
+p.subti{
+	font-size: 18px;
+	font-style: underline;
+	font-weight: bold;
+	margin-bottom:5px;
+
+}
+p.listaElemento{
+	color: ;
+	font-family: "Delius-Regular"
+}
+
+div.subastaMuestra{
+	padding: 5px;
+	box-sizing: border-box;
+	border: 1px solid #a8a8a8;
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+p.subasta{
+	font-weight:bold;
+	font-size: 16px;
+
+}
+div.usuarioMuestra:hover{
+	background-color: #777777;
+}
+div.subastaMuestra:hover{
+	background-color: #777777;
+}
