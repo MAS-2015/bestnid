@@ -215,6 +215,9 @@ button.reply{
 	margin-right: 3%;
 	padding: 3px;
 }
+button.reply:hover{
+	color: #232125;
+}
 button.cancel{
 	display: inline;
 	visibility: hidden;
@@ -227,6 +230,9 @@ button.cancel{
 	margin:0 auto;
 	padding: 3px;
 
+}
+button.cancel:hover{
+	color: #232125;
 }
 
 p.infoBody{
@@ -258,7 +264,10 @@ p.infoHead{
 	margin-right: 3%;
 	padding: 3px;
 }
+#botonPregunta:hover{
+	color: #232125;
 
+}
 #precio{
 	width:8em;
 }

@@ -16,7 +16,9 @@
 
 	$select = "SELECT pregunta, preguntas.fecha, respuesta , respuestas.fecha, preguntas.idPregunta FROM preguntas LEFT OUTER JOIN respuestas ON preguntas.idPregunta = respuestas.idPregunta WHERE idSubasta = ".$idSubasta." order by preguntas.idPregunta";
 	$resultado = mysqli_query($conexion, $select);
+	$cont = 0;
 	while($tuplaPregunta = mysqli_fetch_row($resultado)){
+		$cont++;
 		echo "<div class = \"singularidad\" >
 					<div class=\"pregunta\" id=\"pregunta".$tuplaPregunta[4]."\">
 						<div class = \"headPregunta\" >
@@ -59,6 +61,9 @@
 
 		echo"</div><br>";
 	}
-
+	if ($cont == 0){
+		echo"<p>Todav&iacute;a nadie ha hecho una pregunta</p>
+			<br>";
+	}
 
 ?>
