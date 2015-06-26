@@ -2,6 +2,9 @@
 	if(!session_start()){
 		session_start();
 	}
+	if(isset($_SESSION["Usuario"])){
+		header('Location: index.php');
+	}
 ?>
 <html>
 	<head>

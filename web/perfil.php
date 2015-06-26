@@ -2,6 +2,9 @@
 	if(!session_start()){
 		session_start();
 	}
+	if(!isset($_SESSION["Usuario"])){
+		header('Location: index.php');
+	}
 ?>
 
 <html>
@@ -10,7 +13,7 @@
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/header.css" media="all">
 		<script type="text/javascript" src="js/formReg.js"></script>
 		<script type="text/javascript" src="js/numeros.js"></script>		
-		<link type="text/css" id="global-css" rel="stylesheet" href="css/registro.css" media="all">		
+		<link type="text/css" id="global-css" rel="stylesheet" href="css/ajustes.css" media="all">		
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/perfil.css" media="all">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/styles.css" media="all">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/home.css">		
@@ -87,7 +90,40 @@
 					});
 				});              
 			});    
+		</script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#pass').blur(function(){
+				$('#Info4').html('<img src="imagenes/loader.gif" alt=""/>').fadeOut(1);
+				var pass = $('#pass').val();
+				if(pass.length > 5){
+						$('#Info4').html('<div id="Success">Contrase&ntilde;a correcta</div>');
+				} else {
+					$('#Info4').html('<div id="Error">Contrase&ntilde;a invalida, muy corta</div>');
+				} 
+				$('#Info4').fadeIn(1).html(data);
+			});
+		});
 		</script>		
+		<script type="text/javascript">
+		$(document).ready(function() {
+			$('#passconf').blur(function(){
+				$('#Info5').html('<img src="imagenes/loader.gif" alt=""/>').fadeOut(1);
+				var pass = $('#pass').val();
+				var passconf = $('#passconf').val();
+				if(pass != '' && passconf != '' && pass.length > 5){
+					if(pass != passconf){
+						$('#Info5').html('<div id="Error">Las contrase&ntildeas no coinciden</div>');
+					}else{
+						$('#Info5').html('<div id="Success">Contrase&ntilde;a valida</div>');
+					}
+				} else {
+					$('#Info5').html('<div id="Error">Contrase&ntilde;a invalida</div>');
+				}
+				$('#Info5').fadeIn(1).html(data);
+			});
+		});
+		</script>			
 	</head>
 
 

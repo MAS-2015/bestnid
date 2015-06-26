@@ -5,7 +5,7 @@
 ?>
 <html>
 	<head>
-		<title>BESTNID: Registro</title>
+		<title>BESTNID: Subastar</title>
 		<meta charset="UTF-8">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/header.css" media="all">
 		<link type="text/css" id="global-css" rel="stylesheet" href="css/styles.css" media="all">
