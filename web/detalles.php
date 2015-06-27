@@ -57,18 +57,23 @@
 				<div class="preguntas-subasta" id="preguntasSubasta">
 					<span>Preguntas y Respuestas:</span><br>
 				<?php
+
 					if($idSubasta != -1){
 						include("modulos/preguntasyrespuestas.php");
 					}
-
-					if(isset($user)){
-						$idUsuarioSubasta= buscarIdUsuarioPorIdSubasta($idSubasta);
-						$idUsuario = buscarIdUsuarioPorEmail($user);
-						
+                    $sql2="SELECT * FROM subastas WHERE idSubasta=$idSubasta AND DATE(fechaFin)>CURDATE()";
+                    $result=mysqli_query($conexion,$sql2);
+                    if(mysqli_num_rows($result) > 0){ 
+					   if(isset($user)){
+                           $idUsuarioSubasta= buscarIdUsuarioPorIdSubasta($idSubasta);
+                           $idUsuario = buscarIdUsuarioPorEmail($user);
 						if($idUsuarioSubasta != $idUsuario){	
 							include("preguntas.php");
 						}
 					}
+                    }
+
+
 
 				?>
 				</div>
