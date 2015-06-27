@@ -97,6 +97,21 @@ function countdown($time){
 	$resultado3 = mysqli_query($conexion, $sql3);
 	echo "SUS SUBASTAS COMPLETADAS: <BR>";
 	if(mysqli_num_rows($resultado3) > 0){
+		echo'
+		<script>		
+		function datosContacto(idSubasta){
+			$.post("modulos/datosContacto.php",
+			{
+				idSubasta: idSubasta,
+			},
+			function(data, status){
+			if(status){ document.getElementById("datos").innerHTML = \'estatus true :\';}
+				document.getElementById("datos").innerHTML = data;
+			});
+		}
+		</script>
+		';
+	
 		while($subastas= mysqli_fetch_row($resultado3)){
 			echo "<div class='cajita'>";
 			echo"<a href='detalles.php?id=$subastas[1]'> $subastas[0] </a>";
@@ -104,6 +119,7 @@ function countdown($time){
 			echo"<img src='$subastas[2]'>";
 		
 			echo"<div class='fecha'>Fecha: $subastas[3]</div>";
+			echo '<div id="datos" ><button class="buttom" onclick="datosContacto(\''.$subastas[1].'\');" >ver datos del ganador</button></div>';
 			echo "</div>";
 		}
 		echo "<br><br><br>";		
