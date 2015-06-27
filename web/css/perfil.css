@@ -51,7 +51,7 @@ div.muestra {
 	display: block;
 	font-size: 20px;
 	color:#353535;
-	height: 100% auto;
+	height: 100%;
 }
 
 div.muestra a{
@@ -69,7 +69,6 @@ div.cajita img{
 	height: 100px;
 	width: 100px;
 	margin-left: 10px;
-
 	float:left;
 	margin-right: 15px;
 }
@@ -112,4 +111,25 @@ div.cajita div.opc2 a {
 
 div.cajita div.opc3 a {
 	color:#023196;
+}
+
+
+div.cajita div.opc4{
+	font-size: 16px;
+	float:left;
+	margin-bottom: 50px;
+	margin-left: 25px;
+}
+
+div.cajita div.opc4 a {
+	color:#023196;
+}
+
+div.cajita div.fecha2{
+	margin-left: 10px;
+	color:#7f7f7f;
+	font-size: 15px;
+	display:inline;
+	float:left;
+
 }

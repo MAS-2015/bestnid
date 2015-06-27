@@ -48,9 +48,9 @@ function countdown($time){
 			echo"<a href='detalles.php?id=$subastas[1]'> $subastas[0] </a>";
 			echo"<br>";
 			echo"<img src='$subastas[2]'>";
-
-			echo"<div class='opc2'><a href='detalles.php?id=$subastas[1]'>VER</a></div>";			
-			echo"<div class='fecha'>Fecha: $subastas[3]</div>";
+			echo"<div class='fecha2'>Fecha: $subastas[3]</div>";			
+			echo"<div class='opc4'><form method='get' action='detalles.php'> 
+			<input type='hidden' name='id' value='$subastas[1]'></input><input class='buttom' type='submit' value='Ver'></input></form></div>";	
 			echo "</div>";
 		}
 		echo "<br><br>";
