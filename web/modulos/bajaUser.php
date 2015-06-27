@@ -2,7 +2,7 @@
 	$id=$_POST['id'];
 	$pass="UsUaRiOdEsAcTiVaDo";
 	include("conexion.php");
-	$sql = "SELECT * FROM `ofertas` INJECT INTO `subastas` ON `ofertas`.`idUsuario` = `subastas`.`idUsuario` WHERE `subastas`.`fechaFin` > NOW()  AND `ofertas`.`idUsuario`= '".$id."'";
+	$sql = "SELECT * FROM `ofertas` INNER JOIN `subastas` ON `ofertas`.`idSubasta` = `subastas`.`idSubasta` WHERE `subastas`.`fechaFin` > NOW()  AND `ofertas`.`idUsuario`= '".$id."'";
 	$resultado= mysqli_query($conexion, $sql);
 	$cantOfertas = mysqli_num_rows($resultado);
 	
