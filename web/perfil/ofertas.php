@@ -11,7 +11,9 @@
 			echo"Su oferta fue: $ofertas[2] <br>Con un valor de $ofertas[3] $ <br>En la subasta";
 			echo"<a href='detalles.php?id=$ofertas[1]'> $ofertas[0] </a>";
 			echo"<img src='$ofertas[4]'>";
-			echo"<div class='opc3'><a href='detalles.php?id=$ofertas[1]'>VER</a></div>";
+
+echo"<div class='opc3'><form method='get' action='detalles.php'> 
+			<input type='hidden' name='id' value='$ofertas[1]'></input><input class='buttom' type='submit' value='Ver'></input></form></div>";
 			echo"<div class='fecha'>Fecha: $ofertas[5]</div>";
 			echo"</div>";
 		}

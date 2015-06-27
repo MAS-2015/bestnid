@@ -7,7 +7,7 @@
 	if(mysqli_num_rows($resultado) > 0){
 		while($ofertas= mysqli_fetch_row($resultado)){
 			echo"<div class='cajita'>";
-			echo"Su Compra fue: $ofertas[2] <br>Con un valor de $ofertas[3] $ <br>En la subasta";
+			echo"Su oferta fue: $ofertas[2] <br>Con un valor de $ofertas[3] $ <br>En la subasta";
 			echo"<a href='detalles.php?id=$ofertas[1]'> $ofertas[0] </a>";
 			echo"<img src='$ofertas[4]'>";
 			echo"<div class='fecha'>Fecha: $ofertas[5]</div>";

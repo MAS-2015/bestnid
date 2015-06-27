@@ -11,7 +11,8 @@
 			echo"<a href='detalles.php?id=$preguntas[2]'> $preguntas[1] </a>";
 			echo"<br>";
 			echo"<img src='$preguntas[3]'>";
-			echo"<div class='opc2'><a href='detalles.php?id=$preguntas[2]'>VER</a></div>";		
+echo"<div class='opc2'><form method='get' action='detalles.php'> 
+			<input type='hidden' name='id' value='$preguntas[2]'></input><input class='buttom' type='submit' value='Ver'></input></form></div>";	
 			echo"<div class='fecha'>Fecha: $preguntas[4]</div>";
 			echo"</div>";
 		}
